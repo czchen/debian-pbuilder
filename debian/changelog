@@ -1,3 +1,13 @@
+pbuilder (0.199+nmu1) unstable; urgency=low
+
+  * Non-Maintainer Upload.
+  
+  * pbuilder-modules: don't clean $BUILDPLACE if another directory has
+    been bind-mounted under it; patch by Matthew Palmer.  (closes:
+    #542915)
+
+ -- Steve M. Robbins <smr@debian.org>  Tue, 28 Dec 2010 10:19:37 -0600
+
 pbuilder (0.199) unstable; urgency=low
 
   * add a more useful message for pbuilder-runhooks when hookdir cannot
