@@ -1,3 +1,15 @@
+pbuilder (0.199+nmu2) unstable; urgency=low
+
+  * Non-maintainer upload with maintainer's permission.
+  * pbuilder-satisfydepends-aptitude: Resolve packages from experimental
+    when necessary. Logic stolen from sbuild. Closes: #606699.
+  * pbuilder-buildpackage, pbuilder-buildpackage-funcs: Handle
+    architecture wildcards properly. Patch from Andres Mejia.
+    Closes: #363193.
+  * Makefile: Don't require a UTF-8 encoding to check the manpages.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Sat, 19 Feb 2011 19:02:34 +0000
+
 pbuilder (0.199+nmu1) unstable; urgency=low
 
   * Non-Maintainer Upload.
