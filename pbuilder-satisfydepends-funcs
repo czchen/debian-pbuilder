@@ -122,7 +122,7 @@ checkbuilddep_archdeps() {
     local INSTALLPKG="$1"
     local ARCH="$2"
     # architectures listed between [ and ] for this dep
-    local DEP_ARCHES="$(echo "$INSTALLPKG" | sed 's/.*\[\(.*\)\].*/\1/')"
+    local DEP_ARCHES="$(echo "$INSTALLPKG" | sed -e 's/.*\[\(.*\)\].*/\1/' -e 'y|/| |')"
     local PKG="$(echo "$INSTALLPKG" | cut -d ' ' -f 1)"
     local USE_IT
     local IGNORE_IT

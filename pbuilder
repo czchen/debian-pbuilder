@@ -116,11 +116,11 @@ File extracted to: $BUILDPLACE
 	recover_aptcache
 	trap saveaptcache_umountproc_cleanbuildplace_trap exit sighup
 
-	RUNNAME="$BUILDPLACE/run"
+	RUNNAME="$BUILDPLACE/runscript"
 	cat "$EXECPROGRAM" > "$RUNNAME"
 	chmod a+x "$RUNNAME"
 	executehooks "F"
-	( ${CHROOTEXEC} /run "$@" )
+	( ${CHROOTEXEC} /runscript "$@" )
 	RET=$?
 	rm -f "$RUNNAME"
 

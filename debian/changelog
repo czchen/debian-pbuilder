@@ -1,3 +1,17 @@
+pbuilder (0.199+nmu4) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Rename the /run script from --execute to /runscript; not using
+    mktemp for consistency with the documentation. (Closes: #627086)
+  * Handle architecture wildcards with more than one architecture.
+    (Closes: #620730) (Closes: #626431)
+  * Fix pbuilderrc(5) formatting. (Closes: #603420)
+  * Fix pbuilder-satisfydepends-classic output, including better line
+    breaks and hyphen-used-as-minus-sign lintian. (Closes: #601250)
+  * Please lintian: add debian/source/format.
+
+ -- Thorsten Glaser <tg@mirbsd.de>  Thu, 26 May 2011 20:49:04 +0000
+
 pbuilder (0.199+nmu3) unstable; urgency=low
 
   * Non-Maintainer Upload.
