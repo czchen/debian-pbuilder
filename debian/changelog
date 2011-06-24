@@ -2,7 +2,51 @@ pbuilder (0.200) UNRELEASED; urgency=low
 
   * 
 
- -- Junichi Uekawa <dancer@debian.org>  Mon, 05 Jul 2010 22:52:02 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 25 Jun 2011 08:07:15 +0900
+
+pbuilder (0.199+nmu4) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Rename the /run script from --execute to /runscript; not using
+    mktemp for consistency with the documentation. (Closes: #627086)
+  * Handle architecture wildcards with more than one architecture.
+    (Closes: #620730) (Closes: #626431)
+  * Fix pbuilderrc(5) formatting. (Closes: #603420)
+  * Fix pbuilder-satisfydepends-classic output, including better line
+    breaks and hyphen-used-as-minus-sign lintian. (Closes: #601250)
+  * Please lintian: add debian/source/format.
+
+ -- Thorsten Glaser <tg@mirbsd.de>  Thu, 26 May 2011 20:49:04 +0000
+
+pbuilder (0.199+nmu3) unstable; urgency=low
+
+  * Non-Maintainer Upload.
+  * Apply patches provided by Gonéri Le Bouder to allow pbuilder to
+    create and manage chroots on kFreeBSD machines (Closes: #542837).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 29 Mar 2011 22:56:44 +0200
+
+pbuilder (0.199+nmu2) unstable; urgency=low
+
+  * Non-maintainer upload with maintainer's permission.
+  * pbuilder-satisfydepends-aptitude: Resolve packages from experimental
+    when necessary. Logic stolen from sbuild. Closes: #606699.
+  * pbuilder-buildpackage, pbuilder-buildpackage-funcs: Handle
+    architecture wildcards properly. Patch from Andres Mejia.
+    Closes: #363193.
+  * Makefile: Don't require a UTF-8 encoding to check the manpages.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Sat, 19 Feb 2011 19:02:34 +0000
+
+pbuilder (0.199+nmu1) unstable; urgency=low
+
+  * Non-Maintainer Upload.
+  
+  * pbuilder-modules: don't clean $BUILDPLACE if another directory has
+    been bind-mounted under it; patch by Matthew Palmer.  (closes:
+    #542915)
+
+ -- Steve M. Robbins <smr@debian.org>  Tue, 28 Dec 2010 10:19:37 -0600
 
 pbuilder (0.199) unstable; urgency=low
 

@@ -33,7 +33,7 @@ allowing the usual configuration options
 to take effect.
 Setting this variable overrides other options.
 .TP
-.BI "ARCHITECTURE=" "`dpkg --print-architecture`"
+.BI "ARCHITECTURE=" "`dpkg \-\-print\-architecture`"
 Specify the default distribution to use.
 This option only affects when doing
 .B "pbuilder create"
@@ -52,12 +52,13 @@ will invoke debsign command after building.
 Specifies the default location for the archived
 chroot image to be created and used.
 This is overridden with the option
-.BR "--basetgz" "."
+.BR "\-\-basetgz" "."
 .TP
 .BI "BINDMOUNTS=" "directories-to-bind-mount"
 When this value is set, pbuilder will mount these directories using
 bind-mount. Do not bind-mount
 .B "/"
+.br
 An Example:
 
 .EX
@@ -88,10 +89,11 @@ Specify the default directory which the build result will
 be copied over to after the building.
 
 Unlike
-.B "--buildresult"
+.B "\-\-buildresult"
 command-line option.
 The path is not canonicalized, so you should specify a full-path,
-not a relative path..TP
+not a relative path.
+.TP
 .BI "CCACHEDIR=" "/var/cache/pbuilder/ccache"
 Specifies where ccache will keep its cached compiler output.
 If this is specified, ccache will be installed upon pbuilder create or
@@ -100,7 +102,8 @@ CCACHEDIR will be bind-mounted in the chroot, and CCACHE_DIR will be
 set to CCACHEDIR.  Note that files in CCACHEDIR are chowned to
 BUILDUSERID (1234 by default).
 .TP
-.BI "BUILDRESULTUID=".TP
+.BI "BUILDRESULTUID="
+.TP
 .BI "BUILDRESULTGID="
 Set the UID and GID of the files built as result.
 They probably need to be set to numeric UID values,
@@ -117,7 +120,7 @@ The default value is
 .BI "BUILDSOURCEROOTCMD=" "fakeroot"
 This option is used on invocation of fakeroot
 for
-.B "dpkg-buildpackage"
+.B "dpkg\-buildpackage"
 in
 .B "pdebuild"
 .TP
@@ -135,7 +138,7 @@ pbuilder.
 Note that this will require fakeroot to be installed within
 the chroot, and fakeroot will automatically be installed.
 And
-.B "-rfakeroot"
+.B "\-rfakeroot"
 will be added to
 .B "DEBBUILDOPTS"
 .TP
@@ -145,10 +148,11 @@ This option is space-delimited.
 This option only affects when doing
 .B "pbuilder create"
 or when
-.B "--override-config"
+.B "\-\-override\-config"
 is specified for
 .B "pbuilder update"
-option..TP
+option.
+.TP
 .BI "export http_proxy=" "http://your-proxy:8080/"
 Defines the proxy for http connection.
 .TP
@@ -159,16 +163,16 @@ This trick can be used for other environmental variables as well.
 .TP
 .BI "DEBBUILDOPTS=" ""
 The options given here will be passed on to
-.BR dpkg-buildpackage .
+.BR dpkg\-buildpackage .
 This can be useful e.g. for binary-only builds. The command-line option
-.B "--debbuildopts" will be appended to any contents specified here but
+.B "\-\-debbuildopts" will be appended to any contents specified here but
 may also be used to reset the list of options.
 
 The default value is to build source and binary package.
 .TP
-.BI "DEBOOTSTRAPOPTS=" "( '--variant=buildd' )"
+.BI "DEBOOTSTRAPOPTS=" "( '\-\-variant=buildd' )"
 When this option is set to
-.B "--variant=buildd"
+.B "\-\-variant=buildd"
 .B "pbuilder"
 will invoke
 .B "$DEBOOTSTRAP"
@@ -188,12 +192,12 @@ and
 .TP
 .BI "DEBEMAIL=" "Maintainer Name <Mail@Address>"
 If this was specified,
-.B dpkg-buildpackage
+.B dpkg\-buildpackage
 command will be passed with the necessary sponsorship option
-.B "-mMaintainer Name <Mail@Address>"
+.B "\-mMaintainer Name <Mail@Address>"
 on building.
 Overridden with
-.B "--debemail"
+.B "\-\-debemail"
 command-line option.
 The default configuration for
 .B pbuilder
@@ -211,7 +215,7 @@ Specify the default distribution to use.
 This option only affects when doing
 .B "pbuilder create"
 or when
-.B "--override-config"
+.B "\-\-override\-config"
 is specified for
 .B "pbuilder update"
 option.
@@ -228,7 +232,7 @@ Also this is installed on
 Specifies the default location for the user hooks
 directory.
 This is overridden with the option
-.BR "--hookdir" "."
+.BR "\-\-hookdir" "."
 
 If this is specified, hooks are searched for in
 the chroot, when running
@@ -251,8 +255,9 @@ the chroot.
 .BI "OTHERMIRROR=" "deb http://xxx/xxx/ ./ " "[|" " other deb lines... " "]"
 The lines which is added to the sources.list, delimited with
 .B "|"
-Like
-.B "deb http://local/mirror stable main|deb file:/usr/local/mirror ./"
+Like:
+.br
+.B "deb http://local/mirror sid main|deb file:/usr/local/mirror ./"
 
 The deb lines here are the ones that will appear at the top of the
 .B "sources.list"
@@ -268,7 +273,7 @@ listed in
 
 To make changes on mirror site effective on
 .B update
-.B "--override-config"
+.B "\-\-override\-config"
 needs to be specified.
 .TP
 .BI "PDEBUILD_PBUILDER=" "pbuilder"
@@ -279,26 +284,26 @@ and
 .B "cowbuilder"
 .TP
 .BI "PKGNAME_LOGFILE_EXTENTION=" ".build"
-The extension of filename used in pkgname-logfile option.
+The extension of filename used in pkgname\-logfile option.
 .TP
 .BI "PKGNAME_LOGFILE=" "yes"
 Always run with
-.B "--pkgname-logfile"
+.B "\-\-pkgname\-logfile"
 option, and create a logfile named after the package name.
 .TP
-.BI "PBUILDERROOTCMD=" "sudo -E"
+.BI "PBUILDERROOTCMD=" "sudo \-E"
 This option is used on invocation of
 .B "pbuilder build"
 in
 .B "pdebuild"
 .TP
-.BI "PBUILDERSATISFYDEPENDSCMD=" "/usr/lib/pbuilder/pbuilder-satisfydepends"
+.BI "PBUILDERSATISFYDEPENDSCMD=" "/usr/lib/pbuilder/pbuilder\-satisfydepends"
 This option is used by various parts of pbuilder to satisfy
 (i.e. install) the build-dependencies of a package.  There are four
 implementations:
 
 The "experimental" implementation,
-"pbuilder-satisfydepends-experimental", which might be useful to pull
+"pbuilder\-satisfydepends\-experimental", which might be useful to pull
 packages from experimental or from repositories with a low APT Pin
 Priority.
 
@@ -316,14 +321,14 @@ used until 0.172.
 
 The default is now "aptitude".
 .TP
-.BI "PBUILDERSATISFYDEPENDSOPT=" "('--check-key')"
-Array of flags to give to pbuilder-satisfydepends.
-Specifying --check-key here will try to verify key signatures.
+.BI "PBUILDERSATISFYDEPENDSOPT=" "('\-\-check\-key')"
+Array of flags to give to pbuilder\-satisfydepends.
+Specifying \-\-check\-key here will try to verify key signatures.
 
 .TP
-.BI "APTGETOPT=" "('--force-yes')"
-Extra flags to give to apt-get.
-Default is --force-yes, which will skip key verification of packages
+.BI "APTGETOPT=" "('\-\-force\-yes')"
+Extra flags to give to apt\-get.
+Default is \-\-force\-yes, which will skip key verification of packages
 to be installed. Unset if you want to enable key verification.
 
 .TP
@@ -352,7 +357,7 @@ being mounted.
 .BI "USE_PDEBUILD_INTERNAL=" "yes"
 When this option is set to
 .I yes
-.B "pdebuild-internal"
+.B "pdebuild\-internal"
 implementation of
 .B pdebuild
 is used.
@@ -376,7 +381,7 @@ The homepage is available at
 .SH "FILES"
 .I "/etc/pbuilderrc, $HOME/.pbuilderrc"
 .SH "SEE ALSO"
-.BR "/usr/share/doc/pbuilder/pbuilder-doc.html" ", "
+.BR "/usr/share/doc/pbuilder/pbuilder\-doc.html" ", "
 .BR "cowbuilder" "(8), "
 .BR "pbuilder" "(8), "
 .BR "pdebuild" "(1)"

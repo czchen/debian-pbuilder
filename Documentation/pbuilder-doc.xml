@@ -1609,7 +1609,7 @@ cache location</entry>
 	      </entry>
 	    </row>
 	    <row>
-	      <entry><filename>/run</filename></entry> 
+	      <entry><filename>/runscript</filename></entry> 
 	      <entry>The
 	      script passed as an argument to
 	      <command>pbuilder</command> execute is passed on.
