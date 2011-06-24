@@ -201,6 +201,7 @@ EOF
 function umountproc () {
     # push arguments on a stack to reverse direction.
     local reversed
+    DEB_BUILD_ARCH_OS=$(dpkg-architecture -qDEB_BUILD_ARCH_OS)
     reversed=
     for mnt in $BINDMOUNTS; do
 	reversed="$mnt $reversed"
@@ -211,17 +212,20 @@ function umountproc () {
     if [ -x /usr/sbin/selinuxenabled ] && /usr/sbin/selinuxenabled; then
 	umount_one "selinux"
     fi
-    if [ "$USEDEVPTS" = "yes" ]; then
+    if [ "$DEB_BUILD_ARCH_OS" = "linux" ] && [ "$USEDEVPTS" = "yes" ]; then
 	umount_one "dev/pts"
     fi
     if [ "$USEDEVFS" = "yes" ]; then
 	umount_one "dev"
     fi
     if [ "$USEPROC" = "yes" ]; then
-	if [ -e $BUILDPLACE/proc/sys/fs/binfmt_misc/status ]; then
+	if [ "$DEB_BUILD_ARCH_OS" = "linux" ] && [ -e $BUILDPLACE/proc/sys/fs/binfmt_misc/status ]; then
 	    umount_one "proc/sys/fs/binfmt_misc"
 	fi
 	umount_one "proc"
+    fi
+    if [ "$DEB_BUILD_ARCH_OS" = "kfreebsd" ]; then
+        umount_one "sys"
     fi
 }
 
@@ -230,10 +234,13 @@ function umountproc () {
 # Also create a policy-rc.d script if it doesn't already exist.
 function mountproc () {
     local -a mounted
+    DEB_BUILD_ARCH_OS=$(dpkg-architecture -qDEB_BUILD_ARCH_OS)
     if [ "$USEPROC" = "yes" ]; then
 	log "I: mounting /proc filesystem"
 	mkdir -p $BUILDPLACE/proc
-	mount -t proc /proc "$BUILDPLACE/proc"
+	PROCFS="proc"
+	[ "$DEB_BUILD_ARCH_OS" = "kfreebsd" ] && PROCFS="linprocfs"
+	mount -t $PROCFS /proc "$BUILDPLACE/proc"
 	ln -s ../proc/mounts $BUILDPLACE/etc/mtab 2> /dev/null || true
 	mounted[${#mounted[@]}]="$BUILDPLACE/proc"
     fi
@@ -243,7 +250,7 @@ function mountproc () {
 	mount -t devfs /dev "$BUILDPLACE/dev" 
 	mounted[${#mounted[@]}]="$BUILDPLACE/dev"
     fi
-    if [ "$USEDEVPTS" = "yes" ]; then
+    if [ "$DEB_BUILD_ARCH_OS" = "linux" ] && [ "$USEDEVPTS" = "yes" ]; then
 	log "I: mounting /dev/pts filesystem"
 	mkdir -p $BUILDPLACE/dev/pts || true
 	TTYGRP=5
@@ -258,10 +265,12 @@ function mountproc () {
 	mount -t selinuxfs /selinux "$BUILDPLACE/selinux"
 	mounted[${#mounted[@]}]="$BUILDPLACE/selinux"
     fi
+    MOUNTPARAMS="-obind"
+    [ "$DEB_BUILD_ARCH_OS" = "kfreebsd" ] && MOUNTPARAMS="-t nullfs"
     for mnt in $BINDMOUNTS; do
 	log "I: Mounting $mnt"
 	if mkdir -p "$BUILDPLACE/$mnt" && 
-	    mount -obind "$mnt" "$BUILDPLACE/$mnt"; then
+	    mount $MOUNTPARAMS "$mnt" "$BUILDPLACE/$mnt"; then
 	    # successful.
 	    mounted[${#mounted[@]}]="$mnt"
 	else
