@@ -1,8 +1,9 @@
-pbuilder (0.200) UNRELEASED; urgency=low
+pbuilder (0.200) unstable; urgency=low
 
-  * 
+  * Acknowledge NMUs. (closes: #542915, #363193, #606699, #542837,
+    #601250, #603420, #626431, #620730, #627086)
 
- -- Junichi Uekawa <dancer@debian.org>  Sat, 25 Jun 2011 08:07:15 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 26 Jun 2011 09:20:24 +0900
 
 pbuilder (0.199+nmu4) unstable; urgency=low
 
