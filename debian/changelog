@@ -1,3 +1,9 @@
+pbuilder (0.201) UNRELEASED; urgency=low
+
+  * [changelog to be automatically filled by git-dch]
+
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 29 Jun 2011 20:58:43 +0900
+
 pbuilder (0.200) unstable; urgency=low
 
   * Acknowledge NMUs. (closes: #542915, #363193, #606699, #542837,
