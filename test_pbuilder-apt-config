@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -178,10 +178,7 @@ expect_success run_suite_mode --mirror "" --suite suite --archive ubuntu
 expect_output "deb ppa-people-ppa suite component" run_suite_mode --mirror "" --suite suite --archive ppa:people
 expect_output "deb ppa-people-otherppa suite component" run_suite_mode --mirror "" --suite suite --archive ppa:people/otherppa
 
-# Check unknown suite case.
-expect_output "Unknown archive for dist=suite
-suite" debootstrap_suite --suite suite
-
+expect_output "hamm" debootstrap_suite --suite hamm
 expect_output "sid" debootstrap_suite --suite sid
 expect_output "sid" debootstrap_suite --suite unstable
 expect_output "mirror" debootstrap_mirror --suite sid --mirror mirror
