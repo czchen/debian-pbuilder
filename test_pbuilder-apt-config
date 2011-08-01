@@ -45,7 +45,7 @@ debian-archive
 EOF
 
 run_suite_mode() {
-    "$PBUILDER_APT_CONFIG" --mirror-map="$mirror_map" --with-sources=no --mirror mirror --suite suite --components component apt-sources "$@"
+    "$PBUILDER_APT_CONFIG" --mirror-map="$mirror_map" --with-sources=no --mirror mirror --suite hamm --components component apt-sources "$@"
 }
 
 debootstrap_suite() {
@@ -94,33 +94,33 @@ test_options() {
     exit 1
 }
 
-expect_output "deb mirror suite component" run_suite_mode
+expect_output "deb mirror hamm component" run_suite_mode --suite hamm
 
-expect_output "deb archive-mirror suite component" run_suite_mode --mirror "" --archive archive
+expect_output "deb archive-mirror hamm component" run_suite_mode --mirror "" --archive archive
 expect_fail run_suite_mode --mirror "" --archive nomirror
 expect_output "deb http://archive.debian.org/debian/ bo component" run_suite_mode --mirror "" --suite bo
 
 expect_output "deb ubuntu-mirror lucid component" run_suite_mode --mirror "" --suite lucid --arch i386
 expect_output "deb ubuntu-ports-mirror lucid component" run_suite_mode --mirror "" --suite lucid --arch armel
 
-expect_output "deb mirror suite comp1
-deb mirror suite comp1 comp2 comp3
-deb mirror suite comp1 comp2 comp3" test_components
+expect_output "deb mirror hamm comp1
+deb mirror hamm comp1 comp2 comp3
+deb mirror hamm comp1 comp2 comp3" test_components
 
-expect_output "deb mirror suite component
+expect_output "deb mirror hamm component
 
-deb mirror suite component
-deb mirror suite-pocket1 component
+deb mirror hamm component
+deb mirror hamm-pocket1 component
 
-deb mirror suite component
-deb mirror suite-pocket1 component
-deb mirror suite-pocket2 component
-deb mirror suite-pocket3 component
+deb mirror hamm component
+deb mirror hamm-pocket1 component
+deb mirror hamm-pocket2 component
+deb mirror hamm-pocket3 component
 
-deb mirror suite component
-deb mirror suite-pocket1 component
-deb mirror suite-pocket2 component
-deb mirror suite-pocket3 component" test_pockets
+deb mirror hamm component
+deb mirror hamm-pocket1 component
+deb mirror hamm-pocket2 component
+deb mirror hamm-pocket3 component" test_pockets
 
 expect_output "deb unstable comp1" test_profile unstable
 expect_output "deb sid comp1" test_profile sid
@@ -161,27 +161,30 @@ deb lucid-updates comp1
 deb lucid-proposed comp1
 deb lucid-security comp1" test_profile lucid-proposed
 
-expect_output "deb     mirror suite component
-deb-src mirror suite component" run_suite_mode --with-sources=yes
-expect_output "deb     mirror suite component
-deb-src mirror suite component" run_suite_mode --with-sources=
-expect_output "deb     mirror suite component
-#deb-src mirror suite component" run_suite_mode --with-sources=disabled
-expect_output "deb mirror suite component" run_suite_mode --with-sources=no
+expect_output "deb     mirror hamm component
+deb-src mirror hamm component" run_suite_mode --with-sources=yes
+expect_output "deb     mirror hamm component
+deb-src mirror hamm component" run_suite_mode --with-sources=
+expect_output "deb     mirror hamm component
+#deb-src mirror hamm component" run_suite_mode --with-sources=disabled
+expect_output "deb mirror hamm component" run_suite_mode --with-sources=no
 
-expect_output "deb ubuntu-mirror suite component" run_suite_mode --mirror "" --archive ubuntu
-expect_output "deb ubuntu-ports-mirror suite component" run_suite_mode --arch armel --mirror "" --archive ubuntu-ports
-expect_fail run_suite_mode --arch armel --mirror "" --archive otherarchive
+expect_output "deb ubuntu-mirror hamm component" run_suite_mode --mirror "" --archive ubuntu
+expect_output "deb ubuntu-ports-mirror hamm component" run_suite_mode --arch armel --mirror "" --archive ubuntu-ports
+expect_fail run_hamm_mode --arch armel --mirror "" --archive otherarchive
 expect_success run_suite_mode --mirror "" --suite lucid
 expect_fail    run_suite_mode --mirror "" --suite suite
 expect_success run_suite_mode --mirror "" --suite suite --archive ubuntu
 expect_output "deb ppa-people-ppa suite component" run_suite_mode --mirror "" --suite suite --archive ppa:people
 expect_output "deb ppa-people-otherppa suite component" run_suite_mode --mirror "" --suite suite --archive ppa:people/otherppa
 
-expect_output "suite" debootstrap_suite --suite suite
+# Check unknown suite case.
+expect_output "Unknown archive for dist=suite
+suite" debootstrap_suite --suite suite
+
 expect_output "sid" debootstrap_suite --suite sid
 expect_output "sid" debootstrap_suite --suite unstable
-expect_output "mirror" debootstrap_mirror --suite suite --mirror mirror
+expect_output "mirror" debootstrap_mirror --suite sid --mirror mirror
 
 expect_output "sid" debootstrap_suite --profile sid
 expect_output "sid" debootstrap_suite --profile unstable
