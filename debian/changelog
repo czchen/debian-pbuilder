@@ -1,8 +1,16 @@
 pbuilder (0.201) UNRELEASED; urgency=low
 
-  * [changelog to be automatically filled by git-dch]
+  [ Junichi Uekawa ]
+  * add an arch indep package for testing.
 
- -- Junichi Uekawa <dancer@debian.org>  Wed, 29 Jun 2011 20:58:43 +0900
+  [ Zlatan Todoric ]
+  * Serbian cyrillic translation of debconf templates. (closes: #635217,
+    #635277)
+
+  [ Jeroen Schot ]
+  * Dutch translation of debconf templates (closes: #631123)
+
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 02 Aug 2011 06:17:30 +0900
 
 pbuilder (0.200) unstable; urgency=low
 
