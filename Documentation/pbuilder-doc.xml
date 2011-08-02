@@ -1675,7 +1675,7 @@ cache location</entry>
     <sect1 id="pbuilderbackgroundhistory">
       <title>Possibly inaccurate Background History of pbuilder</title>
       <para>
-	The following is a most possibly accurate account of how
+	The following is a most possibly inaccurate account of how
 	<command>pbuilder</command> came to happen, and other attempts to
 	make something like <command>pbuilder</command> happen.
 	This part of the document was originally in the AUTHORS file,
