@@ -423,7 +423,7 @@
       </para>
       <itemizedlist>
 	<listitem>
-	  <para>Automatic install-remove-upgrade-remove-install-purge-upgrade-purge test-suite (distributed as an example, <filename>B91dpkg-i</filename>),
+	  <para>Automatic install-remove-install-purge-upgrade-remove-upgrade-purge test-suite (distributed as an example, <filename>B91dpkg-i</filename>),
 	    or just check that everything installs somewhat (<filename>execute_installtest.sh</filename>).</para>
 	</listitem>
 
