@@ -9,9 +9,9 @@
 
 # the main XML file which is source to all documents
 MASTERXML=pbuilder-doc.xml
-HTMLDOCS= pbuilder-doc.html pbuilder-doc.ja.html pbuilder-doc.fr.html
+HTMLDOCS= pbuilder-doc.html pbuilder-doc.ja.html pbuilder-doc.fr.html pbuilder-doc.de.html
 
-all: pbuilder-doc.html pbuilder-doc.ja.html pbuilder-doc.fr.html
+all: $(HTMLDOCS)
 
 %.html: %.xml pbuilder-doc.xsl
 	xsltproc pbuilder-doc.xsl $< > $@.tmp
