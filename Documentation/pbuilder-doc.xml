@@ -124,7 +124,7 @@
 	will update the base.tgz.
 	It will extract the chroot, invoke <command>apt-get update</command>
 	and <command>apt-get dist-upgrade</command> inside the
-	chroot, and then recreate the base.tgz (the base tar-ball.)
+	chroot, and then recreate the base.tgz (the base tar-ball).
       </para>
       <para>
 	It is possible to switch the distribution which the 
@@ -271,8 +271,8 @@
 	<command>pbuilder</command> requires full root privilege
 	when it is satisfying the build-dependencies, but most packages do not
 	need root privilege to build, or even refused to build when they are built as root.
-	<command>pbuilder </command> can create a user which is only used
-	inside <command>pbuilder </command> and use that user id when
+	<command>pbuilder</command> can create a user which is only used
+	inside <command>pbuilder</command> and use that user id when
 	building, and use the <command>fakeroot</command> command
 	when root privilege is required.
       </para>
@@ -448,7 +448,7 @@
 	The test files are shell scripts
 	placed in
 	<filename>debian/pbuilder-test/NN_name</filename> (where
-	NN is number) following run-parts standard<footnote>
+	NN is a number) following run-parts standard<footnote>
 	  <para> See run-parts(8). For example, no '.' in file
 	    names!
 	  </para>
@@ -461,7 +461,7 @@
       </para>
       <para>
 	Example scripts for use with pbuilder-test can be found in 
-	<filename>/usr/share/doc/pbuilder/examples/pbuilder-test</filename>
+	<filename>/usr/share/doc/pbuilder/examples/pbuilder-test</filename>.
       </para>
     </sect1>
     <sect1 id="altcompiler">
@@ -786,7 +786,7 @@ read</screen>
       <title>Logging in to pbuilder to investigate build failure</title>
       <para>
 	It is possible to invoke a shell session after a build
-	failure.  Example hook script are provided as
+	failure.  Example hook scripts are provided as
 	<filename>C10shell</filename> and
 	<filename>C11screen</filename> scripts.  C10shell script will
 	start bash inside chroot, and C11screen script will start GNU
@@ -1406,7 +1406,7 @@ git-clone ssh://git.debian.org/git/pbuilder/pbuilder.git</screen>
     </sect1>
   </chapter>
   <chapter id="experimental">
-    <title>Experimental or wish-list features of pbuilder</title>
+    <title>Experimental or wishlist features of pbuilder</title>
     <para>
       There are some advanced features, above that of the
       basic feature of <command>pbuilder</command>, for some specific purposes.
@@ -1419,7 +1419,7 @@ git-clone ssh://git.debian.org/git/pbuilder/pbuilder.git</screen>
 	the user-mode-linux <command>pbuilder</command> port.
 	lvmpbuilder script in the examples directory implements such port.
 	The scripts and documentation can be found under 
-	<filename>/usr/share/doc/pbuilder/examples/lvmpbuilder/</filename>
+	<filename>/usr/share/doc/pbuilder/examples/lvmpbuilder/</filename>.
       </para>
     </sect1>
     <sect1 id="cowdancer">
@@ -1675,7 +1675,7 @@ cache location</entry>
     <sect1 id="pbuilderbackgroundhistory">
       <title>Possibly inaccurate Background History of pbuilder</title>
       <para>
-	The following is a most possibly inaccurate account of how
+	The following is a most possibly accurate account of how
 	<command>pbuilder</command> came to happen, and other attempts to
 	make something like <command>pbuilder</command> happen.
 	This part of the document was originally in the AUTHORS file,
