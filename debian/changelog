@@ -1,4 +1,4 @@
-pbuilder (0.201) UNRELEASED; urgency=low
+pbuilder (0.201) unstable; urgency=low
 
   [ Junichi Uekawa ]
   * add an arch indep package for testing.
@@ -10,7 +10,7 @@ pbuilder (0.201) UNRELEASED; urgency=low
   [ Jeroen Schot ]
   * Dutch translation of debconf templates (closes: #631123)
 
- -- Junichi Uekawa <dancer@debian.org>  Tue, 02 Aug 2011 06:17:30 +0900
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 02 Aug 2011 07:19:01 +0900
 
 pbuilder (0.200) unstable; urgency=low
 
