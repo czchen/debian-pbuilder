@@ -5,10 +5,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pbuilder-0.171\n"
-"POT-Creation-Date: 2010-01-02 16:15+0000\n"
+"POT-Creation-Date: 2011-08-03 08:53+0900\n"
 "PO-Revision-Date: 2008-05-07 00:28+0200\n"
 "Last-Translator: Vincent Bernat <bernat@luffy.cx>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -250,11 +251,17 @@ msgstr "Mettre à jour le fichier base.tgz"
 # type: Content of: <book><chapter><sect1><para>
 #. type: Content of: <book><chapter><sect1><para>
 #: pbuilder-doc.xml:123
+#, fuzzy
+#| msgid ""
+#| "<command>pbuilder update</command> will update the base.tgz.  It will "
+#| "extract the chroot, invoke <command>apt-get update</command> and "
+#| "<command>apt-get dist-upgrade</command> inside the chroot, and then "
+#| "recreate the base.tgz (the base tar-ball.)"
 msgid ""
 "<command>pbuilder update</command> will update the base.tgz.  It will "
 "extract the chroot, invoke <command>apt-get update</command> and "
 "<command>apt-get dist-upgrade</command> inside the chroot, and then recreate "
-"the base.tgz (the base tar-ball.)"
+"the base.tgz (the base tar-ball)."
 msgstr ""
 "<command>pbuilder update</command> permet de mettre à jour le fichier base."
 "tgz. Le contenu de ce dernier sera extrait, <command>apt-get update</"
@@ -523,12 +530,21 @@ msgstr "Construire des paquets sans être root dans l'environnement de base"
 # type: Content of: <book><chapter><sect1><para>
 #. type: Content of: <book><chapter><sect1><para>
 #: pbuilder-doc.xml:271
+#, fuzzy
+#| msgid ""
+#| "<command>pbuilder</command> requires full root privilege when it is "
+#| "satisfying the build-dependencies, but most packages do not need root "
+#| "privilege to build, or even refused to build when they are built as "
+#| "root.  <command>pbuilder </command> can create a user which is only used "
+#| "inside <command>pbuilder </command> and use that user id when building, "
+#| "and use the <command>fakeroot</command> command when root privilege is "
+#| "required."
 msgid ""
 "<command>pbuilder</command> requires full root privilege when it is "
 "satisfying the build-dependencies, but most packages do not need root "
 "privilege to build, or even refused to build when they are built as root.  "
-"<command>pbuilder </command> can create a user which is only used inside "
-"<command>pbuilder </command> and use that user id when building, and use the "
+"<command>pbuilder</command> can create a user which is only used inside "
+"<command>pbuilder</command> and use that user id when building, and use the "
 "<command>fakeroot</command> command when root privilege is required."
 msgstr ""
 "<command>pbuilder</command> nécessite les privilèges du super-utilisateur "
@@ -848,8 +864,14 @@ msgstr ""
 # type: Content of: <book><chapter><sect1><itemizedlist><listitem><para>
 #. type: Content of: <book><chapter><sect1><itemizedlist><listitem><para>
 #: pbuilder-doc.xml:426
+#, fuzzy
+#| msgid ""
+#| "Automatic install-remove-upgrade-remove-install-purge-upgrade-purge test-"
+#| "suite (distributed as an example, <filename>B91dpkg-i</filename>), or "
+#| "just check that everything installs somewhat "
+#| "(<filename>execute_installtest.sh</filename>)."
 msgid ""
-"Automatic install-remove-upgrade-remove-install-purge-upgrade-purge test-"
+"Automatic install-remove-install-purge-upgrade-remove-upgrade-purge test-"
 "suite (distributed as an example, <filename>B91dpkg-i</filename>), or just "
 "check that everything installs somewhat (<filename>execute_installtest.sh</"
 "filename>)."
@@ -908,7 +930,7 @@ msgstr ""
 msgid ""
 "To use B92test-pkg script, first, add it to your hook directory.  "
 "<placeholder type=\"footnote\" id=\"0\"/>.  The test files are shell scripts "
-"placed in <filename>debian/pbuilder-test/NN_name</filename> (where NN is "
+"placed in <filename>debian/pbuilder-test/NN_name</filename> (where NN is a "
 "number) following run-parts standard<placeholder type=\"footnote\" id=\"1\"/"
 "> for file names.  After a successful build, packages are first tested for "
 "installation and removal, and then each test is ran inside the chroot.  The "
@@ -924,9 +946,13 @@ msgstr ""
 # type: Content of: <book><chapter><sect1><para>
 #. type: Content of: <book><chapter><sect1><para>
 #: pbuilder-doc.xml:463
+#, fuzzy
+#| msgid ""
+#| "Example scripts for use with pbuilder-test can be found in <filename>/usr/"
+#| "share/doc/pbuilder/examples/pbuilder-test</filename>"
 msgid ""
 "Example scripts for use with pbuilder-test can be found in <filename>/usr/"
-"share/doc/pbuilder/examples/pbuilder-test</filename>"
+"share/doc/pbuilder/examples/pbuilder-test</filename>."
 msgstr ""
 "Des scripts d'exemples pour pbuilder-test ont été placés dans <filename>/usr/"
 "share/doc/pbuilder/examples/pbuilder-test</filename>"
@@ -1572,9 +1598,16 @@ msgstr "Se logguer dans pbuilder pour déterminer les problèmes de construction
 # type: Content of: <book><chapter><sect1><para>
 #. type: Content of: <book><chapter><sect1><para>
 #: pbuilder-doc.xml:788
+#, fuzzy
+#| msgid ""
+#| "It is possible to invoke a shell session after a build failure.  Example "
+#| "hook script are provided as <filename>C10shell</filename> and "
+#| "<filename>C11screen</filename> scripts.  C10shell script will start bash "
+#| "inside chroot, and C11screen script will start GNU screen inside the "
+#| "chroot."
 msgid ""
 "It is possible to invoke a shell session after a build failure.  Example "
-"hook script are provided as <filename>C10shell</filename> and "
+"hook scripts are provided as <filename>C10shell</filename> and "
 "<filename>C11screen</filename> scripts.  C10shell script will start bash "
 "inside chroot, and C11screen script will start GNU screen inside the chroot."
 msgstr ""
@@ -2944,7 +2977,9 @@ msgstr ""
 # type: Content of: <book><chapter><title>
 #. type: Content of: <book><chapter><title>
 #: pbuilder-doc.xml:1409
-msgid "Experimental or wish-list features of pbuilder"
+#, fuzzy
+#| msgid "Experimental or wish-list features of pbuilder"
+msgid "Experimental or wishlist features of pbuilder"
 msgstr "Fonctionnalités expérimentales ou souhaitées de pbuilder"
 
 # type: Content of: <book><chapter><para>
@@ -2966,13 +3001,21 @@ msgstr "Utilisation de LVM"
 # type: Content of: <book><chapter><sect1><para>
 #. type: Content of: <book><chapter><sect1><para>
 #: pbuilder-doc.xml:1417
+#, fuzzy
+#| msgid ""
+#| "LVM2 has a useful snapshot function that features Copy-on-write images.  "
+#| "That could be used for <command>pbuilder</command> just as it can be used "
+#| "for the user-mode-linux <command>pbuilder</command> port.  lvmpbuilder "
+#| "script in the examples directory implements such port.  The scripts and "
+#| "documentation can be found under <filename>/usr/share/doc/pbuilder/"
+#| "examples/lvmpbuilder/</filename>"
 msgid ""
 "LVM2 has a useful snapshot function that features Copy-on-write images.  "
 "That could be used for <command>pbuilder</command> just as it can be used "
 "for the user-mode-linux <command>pbuilder</command> port.  lvmpbuilder "
 "script in the examples directory implements such port.  The scripts and "
 "documentation can be found under <filename>/usr/share/doc/pbuilder/examples/"
-"lvmpbuilder/</filename>"
+"lvmpbuilder/</filename>."
 msgstr ""
 "LVM2 permet de créer des instantanés sous forme d'images « Copy-on-write ». "
 "Cette fonctionnalité peut être utilisée aussi bien pour <command>pbuilder</"
@@ -3413,7 +3456,7 @@ msgstr ""
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #: pbuilder-doc.xml:1612
 #, fuzzy
-msgid "<filename>/run</filename>"
+msgid "<filename>/runscript</filename>"
 msgstr "Lien symbolique vers <filename>/proc/mounts</filename>."
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
