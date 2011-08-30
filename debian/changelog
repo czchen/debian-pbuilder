@@ -1,3 +1,9 @@
+pbuilder (0.203) UNRELEASED; urgency=low
+
+  * 
+
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 30 Aug 2011 21:31:05 +0900
+
 pbuilder (0.202) unstable; urgency=low
 
   [ Chris Leick ]
