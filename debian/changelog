@@ -1,8 +1,18 @@
-pbuilder (0.202) UNRELEASED; urgency=low
+pbuilder (0.202) unstable; urgency=low
 
-  * 
+  [ Chris Leick ]
+  * pbuilder: Patch fixes some typos in Documentation (closes: 636376)
+  * pbuilder: [INTL:de] Initial German translation (closes: 636377)
 
- -- Junichi Uekawa <dancer@debian.org>  Tue, 02 Aug 2011 20:56:32 +0900
+  [ Junichi Uekawa ]
+  * po file update
+  * fix makefile for documentation so that I need to edit only one place
+    when adding language.
+
+  [ YOSHINO Yoshihito ]
+  * cannot cross build i386 only package on amd64 host (closes: #624530)
+
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 30 Aug 2011 19:39:12 +0900
 
 pbuilder (0.201) unstable; urgency=low
 
