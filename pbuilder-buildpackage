@@ -32,7 +32,11 @@ if [ ! -f "$PACKAGENAME" ]; then
 fi;
 
 if [ -n "$BUILDUSERNAME" -a -n "$BUILDUSERID" ]; then
-    SUTOUSER="env LOGNAME=$BUILDUSERNAME su -p $BUILDUSERNAME"
+    # Command to SU to user.
+    # COWNDACNER_IGNORE: Normal users don't have write access to build environment, so cowdancer shouldn't have to run.
+    # LOGNAME: set this to shut up some tools.
+    # su -p : switch to user preserving env vars, we need most of them. 
+    SUTOUSER="env COWDANCER_IGNORE=yes LOGNAME=$BUILDUSERNAME su -p $BUILDUSERNAME"
     DEBBUILDOPTS="${DEBBUILDOPTS:+$DEBBUILDOPTS }-rfakeroot"
     EXTRAPACKAGES="${EXTRAPACKAGES} fakeroot"
     log "I: using fakeroot in build."
