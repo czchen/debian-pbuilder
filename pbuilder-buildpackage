@@ -33,10 +33,12 @@ fi;
 
 if [ -n "$BUILDUSERNAME" -a -n "$BUILDUSERID" ]; then
     # Command to SU to user.
-    # COWNDACNER_IGNORE: Normal users don't have write access to build environment, so cowdancer shouldn't have to run.
+    # LD_PRELOAD: Normal users don't have write access to build
+    # environment, so cowdancer shouldn't have to run, and fakeroot
+    # should be running later, so it shouldn't matter.
     # LOGNAME: set this to shut up some tools.
     # su -p : switch to user preserving env vars, we need most of them. 
-    SUTOUSER="env COWDANCER_IGNORE=yes LOGNAME=$BUILDUSERNAME su -p $BUILDUSERNAME"
+    SUTOUSER="env LD_PRELOAD= LOGNAME=$BUILDUSERNAME su -p $BUILDUSERNAME"
     DEBBUILDOPTS="${DEBBUILDOPTS:+$DEBBUILDOPTS }-rfakeroot"
     EXTRAPACKAGES="${EXTRAPACKAGES} fakeroot"
     log "I: using fakeroot in build."
