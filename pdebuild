@@ -46,10 +46,15 @@ export BUILDRESULTGID=$(id -g)
 if [ "${USE_PDEBUILD_INTERNAL}" = 'yes' ]; then
     ${PBUILDERROOTCMD} ${PDEBUILD_PBUILDER} --execute ${EXTRA_CONFIGFILE[@]/#/--configfile } --bindmounts $(readlink -f ..) "$@" -- /usr/lib/pbuilder/pdebuild-internal ${PWD} --debbuildopts "" --debbuildopts "${DEBBUILDOPTS}" --uid "${BUILDRESULTUID}" --gid "${BUILDRESULTGID}" --pbuildersatisfydepends "$PBUILDERSATISFYDEPENDSCMD"
     if [ -d "${BUILDRESULT}" ]; then
+        PARENT_DIR=`dirname $(pwd)`
 	for files in $(sed -rn '/^Files:/,${s/^ .* ([^ ]+)$/\1/p}' ../${CHANGES}); do
-	    cp -a ../"$files" "${BUILDRESULT}"
+            if [ "${PARENT_DIR}" != "${BUILDRESULT}" ]; then
+	        cp -a ../"$files" "${BUILDRESULT}"
+            fi
 	done
-	cp -a ../${CHANGES} "${BUILDRESULT}"
+        if [ "${PARENT_DIR}" != "${BUILDRESULT}" ]; then
+	    cp -a ../${CHANGES} "${BUILDRESULT}"
+        fi
     else
 	log "E: BUILDRESULT=[$BUILDRESULT] is not a directory."
 	exit 1
