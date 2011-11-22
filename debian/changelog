@@ -1,3 +1,9 @@
+pbuilder (0.204~) unstable; urgency=low
+
+  * add --compressprog option
+
+ -- Tino Keitel <tino+debian@tikei.de>  Mon, 21 Nov 2011 21:10:11 +0100
+
 pbuilder (0.203) unstable; urgency=low
 
   * lighttpd test fails with cowdancer loaded. (closes: #640684)

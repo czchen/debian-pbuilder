@@ -105,6 +105,12 @@ while [ -n "$1" ]; do
 	    fi
 	    shift; shift;
 	    ;;
+	--compressprog)
+	    if [ -n "$2" ]; then
+	        COMPRESSPROG="$2"
+	    fi
+	    shift; shift;
+	    ;;
 	--aptcache)
 	    if [ -n "$2" ]; then
 		if [ -d "$2" ]; then
