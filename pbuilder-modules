@@ -75,6 +75,7 @@ pbuilder-options:
  --debug
  --twice
  --autocleanaptcache
+ --compressprog [program]
  --debootstrapopts [debootstrap options]
  --save-after-login/--save-after-exec
  --debootstrap [debootstrap|cdebootstrap]
@@ -434,7 +435,7 @@ function extractbuildplace () {
 	    log "E: failed to find $BASETGZ, have you done <pbuilder create> to create your base tarball yet?"
 	    exit 1
 	fi
-	if ! (cd "$BUILDPLACE" && tar xfzp "$BASETGZ"); then
+	if ! (cd "$BUILDPLACE" && tar -x --use-compress-program "$COMPRESSPROG" -p -f "$BASETGZ"); then
 	    log "E: failed to extract $BASETGZ to $BUILDPLACE"
 	    exit 1
 	fi
@@ -508,7 +509,7 @@ function create_basetgz() {
 	    sleep 10s
 	done
 	log "I: creating base tarball [${BASETGZ}]"
-	if ! tar cfz "${BASETGZ}.tmp" * ; then
+	if ! tar -c --use-compress-program "$COMPRESSPROG" -f "${BASETGZ}.tmp" * ; then
 	    log "E: failed building base tarball"
 	    rm -f "${BASETGZ}.tmp"
 	    exit 1;
