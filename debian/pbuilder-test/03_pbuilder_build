@@ -8,3 +8,5 @@ apt-get update
 apt-get source dsh
 env -u COWDANCER_REUSE -u COWDANCER_ILISTFILE -u LD_PRELOAD \
 pbuilder build dsh*dsc
+cd dsh*/
+pdebuild
