@@ -22,4 +22,26 @@ expect_output "I: test
 W: warning
 E: error" test_information
 
+# test the non-copy case
+function test_conditional_cp_a() {
+    (
+	TEMPDIR=$(mktemp -d)
+	cd "${TEMPDIR}"
+	touch "hoge"
+	outdir=$(readlink -f "${TEMPDIR}/..")
+	conditional_cp_a "hoge" "${outdir}" echo
+    )
+}
+expect_output "" test_conditional_cp_a
+
+# test the copy case.
+function test_conditional_cp_a_copy() {
+    (
+	cd /tmp
+	outdir=/something-else
+	conditional_cp_a "hoge" "${outdir}" echo
+    )
+}
+expect_output "-a hoge /something-else" test_conditional_cp_a_copy
+
 testlib_summary

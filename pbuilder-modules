@@ -561,6 +561,25 @@ function umountproc_trap () {
     exit 1
 }
 
+# copy to .. if target directory is not ..
+function conditional_cp_a() {
+    local source_file="$1"
+    # NOTE: target_dir must not end with /, which is usually the case
+    # with 'readlink -f' result, which BUILDRESULT usually is.
+    local target_dir="$2"
+    # For testability, make cp overridable.
+    local cp="${3:-cp}"
+    
+    # $PWD should end with non-'/', so dirname should give us the parent dir.
+    local parent_dir=$(dirname "$PWD")
+
+    if [ "${parent_dir}" != "${target_dir}" ]; then
+	"$cp" -a "$source_file" "$target_dir"
+    else
+	echo "I: file ${source_file} is already in target, not copying."
+    fi
+}
+
 #Setting environmental variables that are really required:
 #required for some packages to install...
 export LANG=C
