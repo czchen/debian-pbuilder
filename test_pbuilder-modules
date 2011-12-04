@@ -32,7 +32,8 @@ function test_conditional_cp_a() {
 	conditional_cp_a "hoge" "${outdir}" echo
     )
 }
-expect_output "" test_conditional_cp_a
+expect_output "I: file hoge is already in target, not copying." \
+    test_conditional_cp_a
 
 # test the copy case.
 function test_conditional_cp_a_copy() {

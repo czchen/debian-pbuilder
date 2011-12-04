@@ -576,7 +576,7 @@ function conditional_cp_a() {
     if [ "${parent_dir}" != "${target_dir}" ]; then
 	"$cp" -a "$source_file" "$target_dir"
     else
-	echo "I: file ${source_file} is already in target, not copying."
+	log "I: file ${source_file} is already in target, not copying."
     fi
 }
 
