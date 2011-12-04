@@ -1,3 +1,21 @@
+pbuilder (0.204) unstable; urgency=low
+
+  [ Slavko ]
+  * pbuilder: [INTL:sk] Slovak po-debconf translation (closes: #647117)
+
+  [ Tino Keitel ]
+  * Support base.tar.xz/bz2 as well as tgz (closes: #569917)
+
+  [ Tom Hughes ]
+  * Avoid dsc copy error when using build-internal and buildresult=..
+    (closes: #422272)
+
+  [ Junichi Uekawa ]
+  * check for pdebuild in regression test too, just in case.
+  * factor out the file copy test part and add a test.
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 04 Dec 2011 22:43:19 +0900
+
 pbuilder (0.203) unstable; urgency=low
 
   * lighttpd test fails with cowdancer loaded. (closes: #640684)
