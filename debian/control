@@ -20,10 +20,11 @@ Vcs-Browser: http://git.debian.org/?p=pbuilder/pbuilder.git
 
 Package: pbuilder
 Architecture: all
-Depends: debootstrap | cdebootstrap,
-         wget,
+Depends: coreutils (>= 4.5.8-1),
+         debootstrap | cdebootstrap,
+         dpkg-dev,
          debianutils (>= 1.13.1),
-         coreutils (>= 4.5.8-1),
+         wget,
          ${misc:Depends}
 Recommends: fakeroot,
             sudo,
