@@ -146,8 +146,6 @@ EXAMPLE_REBUILD_SCRIPTS += \
 ALLDIRS += EXAMPLE_WORKAROUND
 EXAMPLE_WORKAROUNDDIR := $(EXAMPLEDIR)/workaround
 EXAMPLE_WORKAROUND_SCRIPTS += \
-	examples/E50-initscripts-2.86.ds1-7.workaround.sh \
-	examples/G50-initscripts-2.86.ds1-11-cdebootstrap0.3.9.sh \
 	$(NULL)
 
 ALLDIRS += PKGDATA
