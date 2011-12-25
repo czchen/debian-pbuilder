@@ -1,3 +1,17 @@
+pbuilder (0.205) unstable; urgency=low
+
+  [ Junichi Uekawa ]
+  * Coding style. Use $() instead of ``
+  * add dpkg-dev to pbuilder dependency (closes: 623623)
+  * Remove obsolete example files which were used in regression
+    testsuite for workarounds. (closes: #633055)
+
+  [ Flamarion Jorge ]
+  * pbuilder: [INTL:pt_BR] Brazilian Portuguese debconf templates
+    translation (closes: #651265)
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun, 25 Dec 2011 16:22:00 +0900
+
 pbuilder (0.204) unstable; urgency=low
 
   [ Slavko ]
