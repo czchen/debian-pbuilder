@@ -27,7 +27,7 @@ set -e
 
 PACKAGENAME="$1"
 if [ ! -f "$PACKAGENAME" ]; then
-    log "E: Command line parameter [$PACKAGENAME] is not a valid .dsc file name"
+    log "E: Command line parameter [$PACKAGENAME] is does not exist"
     exit 1;
 fi;
 
