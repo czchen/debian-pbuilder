@@ -33,7 +33,8 @@ function build {
     #apt-get source $PACKAGE -t $DIST > /dev/null 2> $LOGDIR/.$PACKAGE
     G=$(grep-dctrl -S -n -s Directory,Version -r ^$PACKAGE\$ ../../Sources)
     set -- $G
-    DIR=$1 VER=$2
+    DIR=$1
+    VER=`echo $2 | sed s/^.*://`
     dget -x ${MIRROR}/debian/${DIR}/${PACKAGE}_${VER}.dsc > /dev/null 2> $LOGDIR/.$PACKAGE
     
     cd $(find . -type d ! -name .)
