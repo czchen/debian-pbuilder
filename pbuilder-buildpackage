@@ -111,7 +111,7 @@ else
     log "E: pbuilder: Failed chowning to $BUILDUSERNAME:$BUILDUSERNAME"
     exit 1;
 fi
-if echo "( cd tmp/buildd; env PATH=$PATH /usr/bin/dpkg-source -x $(basename $PACKAGENAME) )" | $CHROOTEXEC $SUTOUSER ; then
+if echo "( cd tmp/buildd; env PATH=\"$PATH\" /usr/bin/dpkg-source -x $(basename $PACKAGENAME) )" | $CHROOTEXEC $SUTOUSER ; then
     : # success
 else
     log "E: pbuilder: Failed extracting the source"
@@ -122,7 +122,7 @@ log "I: Building the package"
 
 executehooks "A"
 
-DPKG_COMMANDLINE="env PATH=$PATH dpkg-buildpackage -us -uc ${DEBEMAIL:+\"-e$DEBEMAIL\"} $DEBBUILDOPTS"
+DPKG_COMMANDLINE="env PATH=\"$PATH\" dpkg-buildpackage -us -uc ${DEBEMAIL:+\"-e$DEBEMAIL\"} $DEBBUILDOPTS"
 
 (
     : Build process
