@@ -1,3 +1,26 @@
+pbuilder (0.206) unstable; urgency=low
+
+  [ Matthew Palmer ]
+  * ccache support fails in the face of su PATH mangling (closes: #606687)
+  * mirrorsite is not preseedable (closes: #598316)
+
+  [ Junichi Uekawa ]
+  * pbuilder produces a confusing error message about the
+    dcs filename if it can't read the dsc file. (closes: #644507)
+  * Note that ${HOME} is usually /root if you run with sudo. (closes:
+    #620337)
+
+  [ Steve M. Robbins ]
+  * rebuild/buildall tries to download with acepack when building ack
+    (closes: #553607)
+  * rebuild/buildall tries to download with epoch in
+    filename (closes: #553594)
+
+  [ Peter Eisentraut ]
+  * pdebuild needs to strip debbuildopts -A and -F (closes: #623321)
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 28 Jan 2012 14:58:59 +0900
+
 pbuilder (0.205) unstable; urgency=low
 
   [ Junichi Uekawa ]
