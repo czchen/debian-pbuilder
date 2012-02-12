@@ -14,14 +14,14 @@ _pbuilder()
 
     COMPREPLY=()
     cur=${COMP_WORDS[COMP_CWORD]}
-    options='--create --update --build --login --execute --dumpconfig'
+    options='--create --update --build --login --execute --dumpconfig create update build login execute dumpconfig'
 
     if [ $COMP_CWORD -eq 1 ]; then
         COMPREPLY=( $( compgen -W "$options" | grep "^$cur" ) )
-    elif [ "${COMP_WORDS[1]}" = --build ]; then
+    elif [ "${COMP_WORDS[1]}" = --build -o "${COMP_WORDS[1]}" = build ]; then
         COMPREPLY=( $( compgen -o filenames -G "$cur*.dsc" ) )
     fi
 
     return 0
 }
-[ "$have" ] && complete -F _pbuilder -o filenames pbuilder
+[ "$have" ] && complete -F _pbuilder -o filenames -o plusdirs pbuilder
