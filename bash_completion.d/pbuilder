@@ -7,21 +7,73 @@
 # adapted to pbuilder, the license is GPLv2 or later.
 # Copyright 2007 Junichi Uekawa <dancer@debian.org>
 
-have pbuilder &&
+have pbuilder && {
 _pbuilder()
 {
-    local cur options
+    local cur prev command i
 
     COMPREPLY=()
-    cur=${COMP_WORDS[COMP_CWORD]}
-    options='--create --update --build --login --execute --dumpconfig'
+    _get_comp_words_by_ref cur prev
 
-    if [ $COMP_CWORD -eq 1 ]; then
-        COMPREPLY=( $( compgen -W "$options" | grep "^$cur" ) )
-    elif [ "${COMP_WORDS[1]}" = --build ]; then
-        COMPREPLY=( $( compgen -o filenames -G "$cur*.dsc" ) )
+
+    if [[ $COMP_CWORD -eq 1 ]]; then
+        COMPREPLY=( $( compgen -W '--create --update --build --login --execute \
+            --dumpconfig create update build login execute dumpconfig' -- "$cur" ) )
+        return 0
     fi
+
+    _expand || return 0
+
+    # find the last option flag
+    if [[ $cur != -* ]]; then
+        i=$COMP_CWORD
+        while [[ $prev != -* && $i != 2 ]]; do
+            i=$((i-1))
+            prev=${COMP_WORDS[i-1]}
+        done
+    fi
+
+    command=${COMP_WORDS[1]}
+
+    case $prev in
+        --basetgz)
+            # tgz file completion
+            _filedir 'tgz'
+            return 0
+            ;;
+        --configfile|--logfile)
+            # Any file
+            _filedir
+            return 0
+            ;;
+        --buildplace|--buildresults)
+            # Any directory
+            _filedir -d
+            return 0
+            ;;
+        *)
+            # Provide available flags
+            COMPREPLY=( $( compgen -W '--basetgz --buildplace --mirror --othermirror \
+                --http-proxy --distribution --architecture --components --buildresult \
+                --aptcache --removepackages --extrapackages --configfile --hookdir \
+                --debemail --debbuildopts --logfile --pkgname-logfile --aptconfdir \
+                --timeout --override-config  --binary-arch --preserve-buildplace \
+                --bindmounts --debug --twice --autocleanaptcache --compressprog \
+                --debootstrapopts --save-after-login --save-after-exec --debootstrap' \
+                -- "$cur" ) )
+            if [[ $prev = @(--aptcache|--hookdir) ]]; then
+                # Optionally provide a directory
+                _filedir -d
+            fi
+            if [[ $cur != -* && $command == @(--build|build) ]]; then
+                # dsc file completion
+                _filedir "dsc"
+            fi
+            return 0
+            ;;
+    esac
 
     return 0
 }
-[ "$have" ] && complete -F _pbuilder -o filenames pbuilder
+complete -F _pbuilder pbuilder
+}
