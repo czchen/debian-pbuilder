@@ -53,11 +53,19 @@ PBUILDERROOTCMD="sudo -E"
 # not support unsigned APT repositories
 PBUILDERSATISFYDEPENDSCMD="/usr/lib/pbuilder/pbuilder-satisfydepends"
 
-# You can optionally make pbuilder check key by setting the following flags
-# PBUILDERSATISFYDEPENDSOPT=('--check-key')
-# unset PBUILDERSATISFYDEPENDSOPT
-# option to pass to apt-get always.
-export APTGETOPT=('--force-yes')
+# Arguments for $PBUILDERSATISFYDEPENDSCMD.
+# PBUILDERSATISFYDEPENDSOPT=()
+
+# You can optionally make pbuilder accept untrusted repositories by setting
+# this option to yes, but this may allow remote attackers to compromise the
+# system. Better set a valid key for the signed (local) repository with
+# $APTKEYRINGS (see below).
+ALLOWUNTRUSTED=no
+
+# Option to pass to apt-get always.
+export APTGETOPT=()
+# Option to pass to aptitude always.
+export APTITUDEOPT=()
 
 #Command-line option passed on to dpkg-buildpackage.
 #DEBBUILDOPTS="-IXXX -iXXX"
@@ -81,6 +89,11 @@ DEBOOTSTRAPOPTS=(
     )
 # or unset it to make it not a buildd type.
 # unset DEBOOTSTRAPOPTS
+
+# Keyrings to use for package verification with apt, not used for debootstrap
+# (use DEBOOTSTRAPOPTS). By default the debian-archive-keyring package inside
+# the chroot is used.
+APTKEYRINGS=()
 
 # Set the PATH I am going to use inside pbuilder: default is "/usr/sbin:/usr/bin:/sbin:/bin"
 export PATH="/usr/sbin:/usr/bin:/sbin:/bin"

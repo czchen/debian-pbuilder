@@ -72,6 +72,12 @@ $CHROOTEXEC /usr/bin/apt-get -q -y "${APTGETOPT[@]}" autoremove || true
 $CHROOTEXEC /usr/bin/apt-get -q -y "${APTGETOPT[@]}" install build-essential dpkg-dev $EXTRAPACKAGES
 save_aptcache
 
+# To support package verification inside the repository we may have to import
+# additional keys.
+for KEY in "${APTKEYRINGS[@]}"; do
+    $CHROOTEXEC /usr/bin/apt-key add - < "${KEY}" > /dev/null
+done
+
 # optionally auto-clean apt-cache
 if [ "${AUTOCLEANAPTCACHE}" = "yes" -a -n "$APTCACHE" ]; then
     log "I: Cleaning the cached apt archive"

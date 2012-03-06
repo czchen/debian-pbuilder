@@ -361,7 +361,7 @@ specified in a space-delimited manner, surrounded in double quotations, like:
 .B """/srv /somedir /someotherdir"""
 
 .TP
-.BI "\-\-debootstrapopts " "\-\-variant=buildd"
+.BI "\-\-debootstrapopts " "\-\-variant=buildd" " " "\-\-keyring" " " "/usr/share/keyrings/debian\-archive\-keyring.gpg"
 Add extra command-line options to debootstrap.
 
 Specify multiple options through multiple instance of this
@@ -378,6 +378,24 @@ and
 .B debootstrap
 and default is to use
 .B debootstrap.
+
+.TP
+.BI "\-\-allow\-untrusted "
+Allow untrusted (no key installed) and unsigned repositories.
+.BI Warning:
+Enabling this option may allow remote attackers to compromise the system.
+Better use signed repositories and
+.B "\-\-keyring"
+to add the key(s).
+
+.TP
+.BI "\-\-keyring " "path/to/keyring"
+Additional keyrings to use for package verification with apt, not used for
+debootstrap (use
+.B "\-\-debootstrapopts"
+). Use this to add (local) signed repositories. By default the
+debian-archive-keyring package inside the chroot is used. Can be specified
+multiple times.
 
 .TP
 .BI "\-\-save\-after\-login "

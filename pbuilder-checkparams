@@ -207,6 +207,14 @@ while [ -n "$1" ]; do
 	    DEBOOTSTRAP="$2";
 	    shift; shift;
 	    ;;
+	--allow-untrusted)
+	    ALLOWUNTRUSTED=yes;
+	    shift;
+	    ;;
+	--keyring)
+	    APTKEYRINGS[${#APTKEYRINGS[@]}]="$2";
+	    shift; shift;
+	    ;;
 	--save-after-login|--save-after-exec)
 	    SAVE_AFTER_LOGIN=yes;
 	    shift;
@@ -312,3 +320,13 @@ fi
 
 # sort BINDMOUNTS to ensure that deeper directories are mounted last
 BINDMOUNTS="$(for i in $BINDMOUNTS; do echo $i; done | sort -u)"
+
+if [ "$ALLOWUNTRUSTED" = "yes" ]; then
+    PBUILDERSATISFYDEPENDSOPT[${#PBUILDERSATISFYDEPENDSOPT[@]}]='--allow-untrusted'
+    # Also duplicated in pbuilder-satisfydepends-checkparams!
+    # apt flag to accept untrusted packages
+    APTGETOPT[${#APTGETOPT[@]}]='--force-yes'
+    # aptitude flag to accept untrusted packages
+    APTITUDEOPT[${#APTITUDEOPT[@]}]='-o'
+    APTITUDEOPT[${#APTITUDEOPT[@]}]='Aptitude::CmdLine::Ignore-Trust-Violations=true'
+fi

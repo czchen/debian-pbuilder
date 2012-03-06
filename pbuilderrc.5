@@ -178,17 +178,25 @@ may also be used to reset the list of options.
 
 The default value is to build source and binary package.
 .TP
-.BI "DEBOOTSTRAPOPTS=" "( '\-\-variant=buildd' )"
+.BI "DEBOOTSTRAPOPTS=" "( '\-\-variant=buildd' '\-\-keyring' '/usr/share/keyrings/debian\-archive\-keyring.gpg' )"
 When this option is set to
 .B "\-\-variant=buildd"
 .B "pbuilder"
 will invoke
 .B "$DEBOOTSTRAP"
-with "\-\-variant=buildd"
+with
+.B "\-\-variant=buildd"
 option, which results in debootstrap creating a minimal chroot for
 buildd instead of trying to create a minimal installation chroot.
-.B "DEBOOTSTRAP"
-is another directive in this file.
+.B "\-\-keyring"
+is used to specify a keyring for debootstrap.
+.TP
+.BI "APTKEYRINGS=" "()"
+Additional keyrings to use for package verification with apt, not used for
+debootstrap (use
+.B "$DEBOOTSTRAPOPTS"
+). Use this to add (local) signed repositories. By default the
+debian-archive-keyring package inside the chroot is used.
 .TP
 .BI "DEBOOTSTRAP=" "debootstrap"
 Use this option to switch the implementation of
@@ -329,15 +337,25 @@ used until 0.172.
 
 The default is now "aptitude".
 .TP
-.BI "PBUILDERSATISFYDEPENDSOPT=" "('\-\-check\-key')"
+.BI "PBUILDERSATISFYDEPENDSOPT=" "()"
 Array of flags to give to pbuilder\-satisfydepends.
-Specifying \-\-check\-key here will try to verify key signatures.
 
 .TP
-.BI "APTGETOPT=" "('\-\-force\-yes')"
+.BI "ALLOWUNTRUSTED=" "no"
+Allow untrusted (no key installed) and unsigned repositories.
+.BI Warning:
+Enabling this option may allow remote attackers to compromise the system.
+Better use signed repositories and
+.B "$APTKEYRINGS"
+to add the key(s).
+
+.TP
+.BI "APTGETOPT=" "()"
 Extra flags to give to apt\-get.
-Default is \-\-force\-yes, which will skip key verification of packages
-to be installed. Unset if you want to enable key verification.
+
+.TP
+.BI "APTITUDEGETOPT=" "()"
+Extra flags to give to aptitude.
 
 .TP
 .BI "REMOVEPACKAGES=" "lilo"

@@ -1,3 +1,22 @@
+pbuilder (0.207) unstable; urgency=low
+
+  The default configuration will now only install trusted packages.  This
+  prevents building packages with manipulated sources or a system compromise
+  due to a man-in-the-middle attack.
+
+  However this also prevents installing packages from unsigned repositories by
+  default.
+
+  If you really want to continue using unsigned repositories, you have to set
+  ALLOWUNTRUSTED=yes in your .pbuilderrc or use the --allow-untrusted option.
+  But if possible use a signed repository and set the used keys with the new
+  --keyring option (can be passed multiple times).
+
+  Due to this change the PBUILDERSATISFYDEPENDSOPT option --check-key is no
+  longer necessary and thus deprecated.
+
+ -- Simon Ruderich <simon@ruderich.org>  Tue, 06 Mar 2012 02:02:38 +0100
+
 pbuilder (0.197) unstable; urgency=low
 
   The default configuration will now enable ccache.  To disable installation

@@ -27,13 +27,6 @@ FORCEVERSION=""
 CONTINUE_FAIL="no"
 CHROOTEXEC_AFTER_INTERNAL_CHROOTEXEC=no
 
-# aptitude flag to ignore key verification
-PBUILDER_APTITUDE_CHECK_OPTS=(
-    '-o'
-    'Aptitude::CmdLine::Ignore-Trust-Violations=true' )
-# apt flag to ignore key verification
-PBUILDER_APT_GET_CHECK_OPTS="--force-yes"
-
 while [ -n "$1" ]; do
     case "$1" in
 	--control|-c)
@@ -80,8 +73,16 @@ while [ -n "$1" ]; do
 	    shift;
 	    ;;
 	--check-key)
-	    unset PBUILDER_APTITUDE_CHECK_OPTS
-	    unset PBUILDER_APT_GET_CHECK_OPTS
+	    log 'W: --check-key is now enabled by default and thus deprecated.'
+	    shift;
+	    ;;
+	--allow-untrusted)
+	    # Also duplicated in pbuilder-checkparams!
+	    # apt flag to accept untrusted packages
+	    APTGETOPT[${#APTGETOPT[@]}]='--force-yes'
+	    # aptitude flag to accept untrusted packages
+	    APTITUDEOPT[${#APTITUDEOPT[@]}]='-o'
+	    APTITUDEOPT[${#APTITUDEOPT[@]}]='Aptitude::CmdLine::Ignore-Trust-Violations=true'
 	    shift;
 	    ;;
 	--help|-h|*)
