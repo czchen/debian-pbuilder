@@ -65,7 +65,14 @@ fi
 # FIXME if the end-user passes another --include= to debootstrap in
 # DEBOOTSTRAPOPTS, it will override the --include=apt one and apt might not be
 # installed
-if ! ( cd "$BUILDPLACE" && "${DEBOOTSTRAP}" ${ARCHITECTURE:+--arch=$ARCHITECTURE} --include=apt "${DEBOOTSTRAPOPTS[@]}" "$DISTRIBUTION" . "$MIRRORSITE" $DEBOOTSTRAPSCRIPT ) ; then
+if ! ( cd "$BUILDPLACE" && \
+    "${DEBOOTSTRAP}" ${ARCHITECTURE:+--arch=$ARCHITECTURE} \
+    --include=apt \
+    "${DEBOOTSTRAPOPTS[@]}" \
+    "$DISTRIBUTION" \
+    . \
+    "$MIRRORSITE" \
+    $DEBOOTSTRAPSCRIPT ) ; then
     log "E: $DEBOOTSTRAP failed"
     exit 1
 fi
@@ -116,7 +123,10 @@ if [ -n "$REMOVEPACKAGES" ]; then
 fi
 recover_aptcache
 $CHROOTEXEC /usr/bin/apt-get -q -y "${APTGETOPT[@]}" "${FORCE_CONFNEW[@]}" dist-upgrade
-$CHROOTEXEC /usr/bin/apt-get -q -y "${APTGETOPT[@]}" install build-essential dpkg-dev $EXTRAPACKAGES
+$CHROOTEXEC /usr/bin/apt-get -q -y "${APTGETOPT[@]}" install \
+    build-essential \
+    dpkg-dev \
+    $EXTRAPACKAGES
 save_aptcache
 
 executehooks "E"

@@ -69,7 +69,10 @@ $CHROOTEXEC /usr/bin/apt-get -q -y "${APTGETOPT[@]}" "${FORCE_CONFNEW[@]}" dist-
 # support autoremove. TODO: Do not ignore error when etch is no longer
 # supported.
 $CHROOTEXEC /usr/bin/apt-get -q -y "${APTGETOPT[@]}" autoremove || true
-$CHROOTEXEC /usr/bin/apt-get -q -y "${APTGETOPT[@]}" install build-essential dpkg-dev $EXTRAPACKAGES
+$CHROOTEXEC /usr/bin/apt-get -q -y "${APTGETOPT[@]}" install \
+    build-essential \
+    dpkg-dev \
+    $EXTRAPACKAGES
 save_aptcache
 
 # To support package verification inside the repository we may have to import

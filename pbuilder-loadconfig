@@ -20,7 +20,10 @@
 export PBUILDER_PKGDATADIR="${PBUILDER_PKGDATADIR:-$PBUILDER_ROOT/usr/share/pbuilder}"
 export PBUILDER_SYSCONFDIR="${PBUILDER_SYSCONFDIR:-$PBUILDER_ROOT/etc}"
 
-for RCFILE in "$PBUILDER_PKGDATADIR"/pbuilderrc "$PBUILDER_SYSCONFDIR"/pbuilderrc "$HOME"/.pbuilderrc; do
+for RCFILE in \
+    "$PBUILDER_PKGDATADIR"/pbuilderrc \
+    "$PBUILDER_SYSCONFDIR"/pbuilderrc \
+    "$HOME"/.pbuilderrc; do
     if [ -f "$RCFILE" ]; then 
 	. "$RCFILE"
     else

@@ -41,7 +41,14 @@ if [ "${USE_PDEBUILD_INTERNAL}" = 'yes' ]; then
 	echo "E: Cannot find .. dir from PWD=$(pwd)" >&2 
 	exit 1
     fi
-    pbuilder-user-mode-linux execute "$@" --bindmounts $(readlink -f ..) /usr/lib/pbuilder/pdebuild-internal ${PWD} --debbuildopts "" --debbuildopts "${DEBBUILDOPTS}"
+    pbuilder-user-mode-linux \
+	execute \
+	"$@" \
+	--bindmounts $(readlink -f ..) \
+	/usr/lib/pbuilder/pdebuild-internal \
+	${PWD} \
+	--debbuildopts "" \
+	--debbuildopts "${DEBBUILDOPTS}"
 else
     if ! dpkg-checkbuilddeps -B; then
 	echo "W: Unmet build-dependency in source" >&2 
@@ -49,7 +56,10 @@ else
     CMD="dpkg-buildpackage -S -us -uc -r${BUILDSOURCEROOTCMD} $DEBBUILDOPTS"
     echo "I: Running $CMD" >&2
     echo "$CMD" | /bin/bash
-    pbuilder-user-mode-linux build "$@" --buildresult "${UML_BUILDRESULT}" ../"${PKG_SOURCENAME}_${PKG_VERSION}".dsc
+    pbuilder-user-mode-linux build \
+	"$@" \
+	--buildresult "${UML_BUILDRESULT}" \
+	../"${PKG_SOURCENAME}_${PKG_VERSION}".dsc
 fi
 
 # do signing with optional key specifier

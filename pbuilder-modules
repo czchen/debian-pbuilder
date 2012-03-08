@@ -135,11 +135,13 @@ function seems_truly_unmounted() {
         log "W: $mountpoint isn't a directory"
         return 1
     fi
-    if [ -r "$BUILDPLACE/proc/mounts" ] && grep -q "^[^ ]* $mountpoint " "$BUILDPLACE/proc/mounts"; then
+    if [ -r "$BUILDPLACE/proc/mounts" ] && \
+	grep -q "^[^ ]* $mountpoint " "$BUILDPLACE/proc/mounts"; then
         log "W: $mountpoint is mounted according to build place's /proc/mounts"
         return 1
     fi
-    if [ -r "/proc/mounts" ] && grep -q "^[^ ]* $BUILDPLACE/$mountpoint " "/proc/mounts"; then
+    if [ -r "/proc/mounts" ] && \
+	grep -q "^[^ ]* $BUILDPLACE/$mountpoint " "/proc/mounts"; then
         log "W: $mountpoint is mounted according to system's /proc/mounts"
         return 1
     fi
