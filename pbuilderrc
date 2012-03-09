@@ -42,6 +42,8 @@ PBUILDERROOTCMD="sudo -E"
 # use cowbuilder for pdebuild
 #PDEBUILD_PBUILDER="cowbuilder"
 
+# additional build results to copy out of the package build area
+#ADDITIONAL_BUILDRESULTS=(xunit.xml .coverage)
 
 # command to satisfy build-dependencies; the default is an internal shell
 # implementation which is relatively slow; there are two alternate
