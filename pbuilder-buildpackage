@@ -173,7 +173,7 @@ if [ -d "${BUILDRESULT}" ]; then
     done
     if [ -n "${ADDITIONAL_BUILDRESULTS}" ]; then
 	echo "Saving additional results ${ADDITIONAL_BUILDRESULTS[*]}"
-	for FILE in ${ADDITIONAL_BUILDRESULTS[*]}; do
+	for FILE in "${ADDITIONAL_BUILDRESULTS[@]}"; do
 	    cp -a "${BUILDPLACE}/tmp/buildd/"*"/${FILE}" "${BUILDRESULT}" || true
 	done
     fi
