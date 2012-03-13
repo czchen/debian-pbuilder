@@ -171,12 +171,10 @@ if [ -d "${BUILDRESULT}" ]; then
 	    cp -p ${FILE} "${BUILDRESULT}" || true
 	fi
     done
-    if [ -n "${ADDITIONAL_BUILDRESULTS}" ]; then
-	echo "Saving additional results ${ADDITIONAL_BUILDRESULTS[*]}"
-	for FILE in "${ADDITIONAL_BUILDRESULTS[@]}"; do
-	    cp -a "${BUILDPLACE}/tmp/buildd/"*"/${FILE}" "${BUILDRESULT}" || true
-	done
-    fi
+    for FILE in "${ADDITIONAL_BUILDRESULTS[@]}"; do
+	log "I: Trying to save additional result ${FILE}"
+	cp -a "${BUILDPLACE}/tmp/buildd/"*"/${FILE}" "${BUILDRESULT}" || true
+    done
 else
     log "E: BUILDRESULT=[$BUILDRESULT] is not a directory."
 fi
