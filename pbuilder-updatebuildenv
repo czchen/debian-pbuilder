@@ -74,12 +74,7 @@ $CHROOTEXEC /usr/bin/apt-get -q -y "${APTGETOPT[@]}" install \
     dpkg-dev \
     $EXTRAPACKAGES
 save_aptcache
-
-# To support package verification inside the repository we may have to import
-# additional keys.
-for KEY in "${APTKEYRINGS[@]}"; do
-    $CHROOTEXEC /usr/bin/apt-key add - < "${KEY}" > /dev/null
-done
+add_additional_aptkeyrings
 
 # optionally auto-clean apt-cache
 if [ "${AUTOCLEANAPTCACHE}" = "yes" -a -n "$APTCACHE" ]; then

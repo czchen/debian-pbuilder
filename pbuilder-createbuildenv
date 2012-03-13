@@ -85,12 +85,7 @@ mkdir -p "$BUILDPLACE/tmp/buildd"
 
 copy_local_configuration
 installaptlines
-# To support package verification inside the repository we may have to import
-# additional keys.
-for KEY in "${APTKEYRINGS[@]}"; do
-    $CHROOTEXEC /usr/bin/apt-key add - < "${KEY}" > /dev/null
-done
-
+add_additional_aptkeyrings
 executehooks "G"
 
 log "I: Refreshing the base.tgz "
