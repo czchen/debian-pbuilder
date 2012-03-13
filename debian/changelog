@@ -1,3 +1,20 @@
+pbuilder (0.208) unstable; urgency=low
+
+  [ Guido Günther ]
+  * Allow to copy additional files out of the build
+    directory (closes: 652634)
+
+  [ Junichi Uekawa ]
+  * fix space handling in additional-buildresults.
+  * fix logging message and conditionality to make it less lines.
+  * factor out common code for apt key rings.
+
+  [ Thorsten Glaser ]
+  * pbuilder-satisfydepends failed due to --check-
+    key deprecation bug (closes: 663283)
+
+ -- Junichi Uekawa <dancer@debian.org>  Tue, 13 Mar 2012 19:11:00 +0900
+
 pbuilder (0.207) unstable; urgency=low
 
   [ Maarten Bezemer ]
