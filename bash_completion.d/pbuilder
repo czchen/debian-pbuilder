@@ -53,13 +53,14 @@ _pbuilder()
             ;;
         *)
             # Provide available flags
-            COMPREPLY=( $( compgen -W '--basetgz --buildplace --mirror --othermirror \
-                --http-proxy --distribution --architecture --components --buildresult \
-                --aptcache --removepackages --extrapackages --configfile --hookdir \
-                --debemail --debbuildopts --logfile --pkgname-logfile --aptconfdir \
-                --timeout --override-config  --binary-arch --preserve-buildplace \
-                --bindmounts --debug --twice --autocleanaptcache --compressprog \
-                --debootstrapopts --save-after-login --save-after-exec --debootstrap' \
+            COMPREPLY=( $( compgen -W '--allow-untrusted --basetgz --buildplace --mirror \
+                --othermirror --http-proxy --distribution --architecture --components \
+                --buildresult --aptcache --removepackages --extrapackages --configfile \
+                --hookdir --debemail --debbuildopts --logfile --pkgname-logfile \
+                --aptconfdir --timeout --override-config  --binary-arch \
+                --preserve-buildplace --bindmounts --debug --twice --autocleanaptcache \
+                --compressprog --debootstrapopts --save-after-login --save-after-exec \
+                --debootstrap' \
                 -- "$cur" ) )
             if [[ $prev = @(--aptcache|--hookdir) ]]; then
                 # Optionally provide a directory
