@@ -21,7 +21,6 @@ set -e
 . /usr/lib/pbuilder/pbuilder-checkparams
 . /usr/lib/pbuilder/pbuilder-runhooks
 
-
 if [ -n "$DISTRIBUTION" ] && [ "$OVERRIDE_APTLINES" = "yes" ]; then
     log "I: Upgrading for distribution $DISTRIBUTION" 
 fi
@@ -30,6 +29,9 @@ if [ "${PBUILDER_DEBUGMODE}" = "yes" ]; then
 else
     TRAP=trap
 fi
+
+# show the current time before doing anything.
+echobacktime
 
 extractbuildplace
 $TRAP umountproc_cleanbuildplace_trap exit sighup

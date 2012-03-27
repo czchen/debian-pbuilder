@@ -34,6 +34,9 @@ else
     TRAP=trap
 fi
 
+# show the current time before doing anything.
+echobacktime
+
 # first clean it.
 cleanbuildplace
 
