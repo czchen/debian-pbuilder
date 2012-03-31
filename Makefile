@@ -180,13 +180,14 @@ all:
 
 check: export PBUILDER_CHECKOUT := $(CURDIR)
 check:
-	# syntax check
+	# syntax check.
 	$(foreach script,$(CHECK_SCRIPTS),bash -n $(script)$(newline))
 	$(foreach mp,$(CHECK_MANPAGES),LANG=C MANWIDTH=80 man --warnings -l $(mp) >/dev/null$(newline))
-	# testsuite
+	# unit tests.
 	$(foreach test,$(wildcard ./test_*),$(test)$(newline))
 
 full-check:
+	# system tests that might take long.
 	cd testsuite && ./run-test.sh
 
 clean:
