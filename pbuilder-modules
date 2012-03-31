@@ -459,6 +459,10 @@ function extractbuildplace () {
     mkdir -p "$BUILDPLACE/tmp/buildd"
 }
 
+function echobacktime () {
+    log "I: Current time: $(date)"
+    log "I: pbuilder-time-stamp: $(date +%s)"
+}
 
 function recover_aptcache() {
     local doit

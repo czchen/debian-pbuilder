@@ -54,11 +54,6 @@ function checkbuilddep () {
     fi
 }
 
-function echobacktime () {
-    log "I: Current time: $(date)"
-    log "I: pbuilder-time-stamp: $(date +%s)"
-}
-
 function showbuildbanner () {
     # show some banners for building
     log "I: pbuilder-buildpackage/"$(dpkg --print-architecture) 
