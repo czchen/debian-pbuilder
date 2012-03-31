@@ -31,7 +31,7 @@ else
 fi
 
 # show the current time before doing anything.
-echobacktime
+echobacktimex
 
 extractbuildplace
 $TRAP umountproc_cleanbuildplace_trap exit sighup
