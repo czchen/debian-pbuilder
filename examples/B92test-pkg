@@ -8,15 +8,14 @@
 set -e 
 
 echo "Installing the prerequisites"
-# ignore the failures since they are not the prime interest
 for PKG in $(ls /tmp/buildd/*.deb | sed -e's,.*/,,;s,_.*,,' ); do
-    apt-get install -y "${APTGETOPT[@]}" "$PKG" || true 
+    apt-get install -y --force-yes "$PKG" || true 
     apt-get remove -y "$PKG" || true 
 done
+# ignore the failures since they are not the prime interest
 
-# install the single package, then try to satisfy dependencies.
 dpkg -i /tmp/buildd/*.deb || true
-apt-get install -y -f "${APTGETOPT[@]}"
+apt-get install -y -f --force-yes
 
 if chmod a+x /tmp/buildd/*/debian/pbuilder-test/*; then
     :
@@ -24,11 +23,11 @@ else
     echo "W: no pbuilder-test script found, skipping"
     exit 0
 fi
-
 SUCCESS=0
 COUNT=0
 unset FAIL || true
-NOFAIL=1
+
+EXIT_CODE=0
 
 # The current directory is the top of the source-tree.
 cd /tmp/buildd/*/debian/..
@@ -41,7 +40,7 @@ for SCRIPT in $(run-parts --test /tmp/buildd/*/debian/pbuilder-test) ; do
     else
     	echo FAIL
 	FAIL[${#FAIL[@]}]="${SCRIPT##*/}"
-	NOFAIL=0
+	EXIT_CODE=1
     fi
     echo "--- END test: ${SCRIPT##*/}"
     ((COUNT=COUNT+1))
@@ -52,3 +51,4 @@ echo "=== $SUCCESS out of $COUNT tests passed"
 echo "${FAIL[@]/#/ failed }"
 echo "-- end of testsuite."
 
+exit "${EXIT_CODE}"
