@@ -14,7 +14,7 @@ Build-Depends: debhelper (>= 7),
                debconf|debconf-2.0,
                po-debconf,
                po4a
-Standards-Version: 3.8.3
+Standards-Version: 3.9.0
 Vcs-Git: git://git.debian.org/git/pbuilder/pbuilder.git
 Vcs-Browser: http://git.debian.org/?p=pbuilder/pbuilder.git
 
