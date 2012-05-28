@@ -1,3 +1,11 @@
+pbuilder (0.211) UNRELEASED; urgency=low
+
+  * policy update: 3.9.1
+  * For testsuite, do not depend on approx instance. It's not always
+    reliable and confusing. Just trust autoconfiguration result here.
+
+ -- Junichi Uekawa <dancer@netfort.gr.jp>  Tue, 29 May 2012 08:06:16 +0900
+
 pbuilder (0.210) unstable; urgency=low
 
   * move around echobacktime definition location. (closes: #666440)
