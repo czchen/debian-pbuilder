@@ -1,8 +1,16 @@
 pbuilder (0.211) UNRELEASED; urgency=low
 
+  [ Junichi Uekawa ]
   * policy update: 3.9.1
   * For testsuite, do not depend on approx instance. It's not always
     reliable and confusing. Just trust autoconfiguration result here.
+  * B90lintian requires bashism (closes: #604546)
+  * B90lintian requires bashism (closes: #604546)
+
+  [ Sjoerd Simons ]
+  * Recognize armhf as an architecture on ubuntu-ports
+  * When testing mirror selection, force an architecture that we know is on that mirror
+  (closes: #671007)
 
  -- Junichi Uekawa <dancer@netfort.gr.jp>  Tue, 29 May 2012 08:06:16 +0900
 
