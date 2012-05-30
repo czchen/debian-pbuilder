@@ -32,6 +32,7 @@ Recommends: fakeroot,
 Suggests: pbuilder-uml,
           gdebi-core,
           cowdancer
+Homepage: http://pbuilder.alioth.debian.org
 Description: personal package builder for Debian packages
  pbuilder constructs a chroot system, and builds a package inside the
  chroot. 
