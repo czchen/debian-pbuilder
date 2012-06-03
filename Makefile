@@ -164,11 +164,7 @@ NOINST_MANPAGES += \
 	pbuilderrc.5 \
 	pdebuild.1 \
 	$(NULL)
-NOINST_SCRIPTS += \
-	debuild.sh \
-	$(NULL)
 CHECK_MANPAGES += $(NOINST_MANPAGES)
-CHECK_SCRIPTS += $(NOINST_SCRIPTS)
 
 # TODO: check subdirs etc.
 
