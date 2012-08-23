@@ -1,3 +1,13 @@
+pbuilder (0.212) unstable; urgency=low
+
+  * update copyright file to be more machine-process-able, and move
+    homepage information to debian/control
+  * set ccachedir to default to off. It's a minor optimization that a
+    developer may choose to enable at the cost of incompatibility and some
+    bugs. (closes: #675691, #675843, #670651)
+
+ -- Junichi Uekawa <dancer@debian.org>  Fri, 24 Aug 2012 04:50:15 +0900
+
 pbuilder (0.211) unstable; urgency=low
 
   [ Junichi Uekawa ]
