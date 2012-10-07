@@ -1,3 +1,13 @@
+pbuilder (0.213) UNRELEASED; urgency=low
+
+  [ Beatrice Torracca ]
+  * Bug#686004: [INTL: it] Italian translation of debconf messages - pbuilder
+
+  [ David Martínez Moreno ]
+  * Bug#686410: pbuilder: [INTL:es] Spanish translation update of debconfmessages - pbuilder.
+
+ -- Junichi Uekawa <dancer@debian.org>  Wed, 03 Oct 2012 05:54:36 +0900
+
 pbuilder (0.212) unstable; urgency=low
 
   * update copyright file to be more machine-process-able, and move
