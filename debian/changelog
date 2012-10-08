@@ -1,4 +1,4 @@
-pbuilder (0.213) UNRELEASED; urgency=low
+pbuilder (0.213) unstable; urgency=low
 
   [ Beatrice Torracca ]
   * Bug#686004: [INTL: it] Italian translation of debconf messages - pbuilder
@@ -6,7 +6,10 @@ pbuilder (0.213) UNRELEASED; urgency=low
   [ David Martínez Moreno ]
   * Bug#686410: pbuilder: [INTL:es] Spanish translation update of debconfmessages - pbuilder.
 
- -- Junichi Uekawa <dancer@debian.org>  Wed, 03 Oct 2012 05:54:36 +0900
+  [ Junichi Uekawa ]
+  * remove /etc/pbuilder/pbuilderrc -> etc/pbuilderrc. (closes: 689213)
+
+ -- Junichi Uekawa <dancer@debian.org>  Mon, 08 Oct 2012 08:30:04 +0900
 
 pbuilder (0.212) unstable; urgency=low
 
