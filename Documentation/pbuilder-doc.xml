@@ -1492,17 +1492,23 @@ $ pdebuild --pbuilder cowbuilder</screen>
     <sect1 id="ccache">
       <title>Usage of ccache</title>
       <para>
-       By default <command>pbuilder</command> will use the C compiler cache
-       <command>ccache</command> to speed up repeated builds of the same
-       package (or packages that compile the same files multiple times for some
-       reason). Using <command>ccache</command> can speed up repeated building
-       of large packages dramatically, at the cost of some disk space and
-       bookkeeping.
+	It is possible to use C compiler cache
+	<command>ccache</command> to speed up repeated builds of the same
+	package (or packages that compile the same files multiple times for some
+	reason). Using <command>ccache</command> can speed up repeated building
+	of large packages dramatically, at the cost of some disk space and
+	bookkeeping.
       </para>
       <para>
-       To disable usage of <command>ccache</command> with
-       <command>pbuilder</command>, you should unset CCACHEDIR in your
-       pbuilderrc file.
+	To enable usage of <command>ccache</command> with
+	<command>pbuilder</command>, you should set CCACHEDIR in your
+	pbuilderrc file.
+      </para>
+      <para>
+	Current implementation of ccache support has several bugs,
+	that CCACHEDIR must be owned by the pbuilder build user, and
+	parallel runs of pbuilder is not supported. Therefore it is
+	not enabled by default.
       </para>
     </sect1>
   </chapter>
