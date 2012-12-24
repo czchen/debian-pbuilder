@@ -36,12 +36,7 @@ preview: pbuilder-doc.html
 	mozilla-firefox -remote "openfile($(PWD)/$<)"
 
 release: pbuilder-doc.html pbuilder-doc.xml pbuilder-doc.css pbuilder-doc.xsl pbuilder-doc.pdf
-	scp $^ cvs.alioth.debian.org:/org/alioth.debian.org/chroot/home/groups/pbuilder/htdocs/ 
-	$(MAKE) release-netfort
-
-# for my homepage-publishing.
-release-netfort: pbuilder-doc.html pbuilder-doc.xml pbuilder-doc.css pbuilder-doc.xsl pbuilder-doc.pdf
-	cp $^ ~/public_html/netfort/software/pbuilder-doc/
+	scp $^ wagner.debian.org:/home/groups/pbuilder/htdocs/ 
 
 clean: 
 	rm -f pbuilder-doc.pdf pbuilder-doc.glo pbuilder-doc.idx pbuilder-doc.log pbuilder-doc.out \
