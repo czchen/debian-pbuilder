@@ -248,7 +248,7 @@ function mountproc () {
 	mounted[${#mounted[@]}]="$BUILDPLACE/proc"
     fi
     if [ "$USEDEVFS" = "yes" ]; then
-	log "I: mounting /dev filesystem"x
+	log "I: mounting /dev filesystem"
 	mkdir -p $BUILDPLACE/dev || true
 	mount -t devfs /dev "$BUILDPLACE/dev" 
 	mounted[${#mounted[@]}]="$BUILDPLACE/dev"
