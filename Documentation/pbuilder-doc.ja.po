@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xxx\n"
-"POT-Creation-Date: 2011-08-03 08:52+0900\n"
+"POT-Creation-Date: 2013-03-02 16:37+0900\n"
 "PO-Revision-Date: 2008-06-27 15:35+0900\n"
 "Last-Translator: Junichi Uekawa <dancer@debian.org>\n"
 "Language-Team: Junichi Uekawa <dancer@debian.org>\n"
@@ -2316,13 +2316,13 @@ msgstr "テストスイートのディレクトリ構造"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><thead><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><thead><row><entry>
-#: pbuilder-doc.xml:1303 pbuilder-doc.xml:1520 pbuilder-doc.xml:1589
+#: pbuilder-doc.xml:1303 pbuilder-doc.xml:1526 pbuilder-doc.xml:1595
 msgid "Directory"
 msgstr "ディレクトリ"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><thead><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><thead><row><entry>
-#: pbuilder-doc.xml:1304 pbuilder-doc.xml:1521 pbuilder-doc.xml:1590
+#: pbuilder-doc.xml:1304 pbuilder-doc.xml:1527 pbuilder-doc.xml:1596
 msgid "Meaning"
 msgstr "意味"
 
@@ -2703,71 +2703,79 @@ msgstr ""
 #. type: Content of: <book><chapter><sect1><para>
 #: pbuilder-doc.xml:1495
 msgid ""
-"By default <command>pbuilder</command> will use the C compiler cache "
-"<command>ccache</command> to speed up repeated builds of the same package "
-"(or packages that compile the same files multiple times for some reason). "
-"Using <command>ccache</command> can speed up repeated building of large "
-"packages dramatically, at the cost of some disk space and bookkeeping."
+"It is possible to use C compiler cache <command>ccache</command> to speed up "
+"repeated builds of the same package (or packages that compile the same files "
+"multiple times for some reason). Using <command>ccache</command> can speed "
+"up repeated building of large packages dramatically, at the cost of some "
+"disk space and bookkeeping."
 msgstr ""
 
 #. type: Content of: <book><chapter><sect1><para>
 #: pbuilder-doc.xml:1503
 msgid ""
-"To disable usage of <command>ccache</command> with <command>pbuilder</"
-"command>, you should unset CCACHEDIR in your pbuilderrc file."
+"To enable usage of <command>ccache</command> with <command>pbuilder</"
+"command>, you should set CCACHEDIR in your pbuilderrc file."
+msgstr ""
+
+#. type: Content of: <book><chapter><sect1><para>
+#: pbuilder-doc.xml:1508
+msgid ""
+"Current implementation of ccache support has several bugs, that CCACHEDIR "
+"must be owned by the pbuilder build user, and parallel runs of pbuilder is "
+"not supported. Therefore it is not enabled by default."
 msgstr ""
 
 # type: Content of: <book><chapter><title>
 #. type: Content of: <book><chapter><title>
-#: pbuilder-doc.xml:1510
+#: pbuilder-doc.xml:1516
 msgid "Reference materials"
 msgstr "参考文献"
 
 # type: Content of: <book><chapter><sect1><title>
 #. type: Content of: <book><chapter><sect1><title>
-#: pbuilder-doc.xml:1512
+#: pbuilder-doc.xml:1518
 msgid "Directory structure outside the chroot"
 msgstr "chroot 外部のディレクトリ構造"
 
 # type: Content of: <book><chapter><sect1><table><title>
 #. type: Content of: <book><chapter><sect1><table><title>
-#: pbuilder-doc.xml:1514
+#: pbuilder-doc.xml:1520
 msgid "Directory Structure outside the chroot"
 msgstr "chroot 内部のディレクトリ構造"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1526
+#: pbuilder-doc.xml:1532
 msgid "<filename>/etc/pbuilderrc</filename>"
 msgstr "<filename>/etc/pbuilderrc</filename>"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1527
+#: pbuilder-doc.xml:1533
 msgid "configuration file"
 msgstr "設定ファイル"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1530
+#: pbuilder-doc.xml:1536
 msgid "<filename>/usr/share/pbuilder/pbuilderrc</filename>"
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1531
+#: pbuilder-doc.xml:1537
 msgid "Default configuration"
 msgstr "デフォルト設定"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1534
+#: pbuilder-doc.xml:1540
 msgid "<filename>/var/cache/pbuilder/base.tgz</filename>"
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1535
+#: pbuilder-doc.xml:1541
 msgid ""
 "Default location pbuilder uses for base.tgz, the tar-ball containing a basic "
 "Debian installation with only the build-essential packages."
@@ -2775,25 +2783,25 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1540
+#: pbuilder-doc.xml:1546
 msgid "<filename>/var/cache/pbuilder/build/PID/</filename>"
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1541
+#: pbuilder-doc.xml:1547
 msgid "Default location pbuilder uses for chroot"
 msgstr "pbuilder がデフォルトでchroot のために利用する場所"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1544
+#: pbuilder-doc.xml:1550
 msgid "<filename>/var/cache/pbuilder/aptcache</filename>"
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1545
+#: pbuilder-doc.xml:1551
 msgid ""
 "Default location <command>pbuilder</command> will use as apt cache, to store "
 "deb packages required during <command>pbuilder</command> build."
@@ -2801,27 +2809,27 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1548 pbuilder-doc.xml:1632
+#: pbuilder-doc.xml:1554 pbuilder-doc.xml:1638
 #, fuzzy
 msgid "<filename>/var/cache/pbuilder/ccache</filename>"
 msgstr "<filename>/var/cache/apt/archives</filename>"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1549
+#: pbuilder-doc.xml:1555
 #, fuzzy
 msgid "Default location <command>pbuilder</command> will use as cache location"
 msgstr "pbuilder がデフォルトでchroot のために利用する場所"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1553
+#: pbuilder-doc.xml:1559
 msgid "<filename>/var/cache/pbuilder/result</filename>"
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1554
+#: pbuilder-doc.xml:1560
 msgid ""
 "Default location <command>pbuilder</command> puts the deb files and other "
 "files created after build"
@@ -2829,13 +2837,13 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1557
+#: pbuilder-doc.xml:1563
 msgid "<filename>/var/cache/pbuilder/pbuilder-umlresult</filename>"
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1558
+#: pbuilder-doc.xml:1564
 msgid ""
 "Default location <command>pbuilder-user-mode-linux</command> puts the deb "
 "files and other files created after build"
@@ -2843,13 +2851,13 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1561
+#: pbuilder-doc.xml:1567
 msgid "<filename>/var/cache/pbuilder/pbuilder-mnt</filename>"
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1562
+#: pbuilder-doc.xml:1568
 msgid ""
 "Default location <command>pbuilder-user-mode-linux</command> uses for "
 "mounting the COW file system, for chrooting."
@@ -2857,25 +2865,25 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1565
+#: pbuilder-doc.xml:1571
 msgid "<filename>/tmp</filename>"
 msgstr "<filename>/tmp</filename>"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1566
+#: pbuilder-doc.xml:1572
 msgid "<command>pbuilder-user-mode-linux</command> will mount tmpfs for work."
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1569
+#: pbuilder-doc.xml:1575
 msgid "<filename>${HOME}/tmp/PID.cow</filename>"
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1570
+#: pbuilder-doc.xml:1576
 msgid ""
 "<command>pbuilder-user-mode-linux</command> use this directory for location "
 "of COW file system."
@@ -2883,13 +2891,13 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1573
+#: pbuilder-doc.xml:1579
 msgid "<filename>${HOME}/uml-image</filename>"
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1574
+#: pbuilder-doc.xml:1580
 msgid ""
 "<command>pbuilder-user-mode-linux</command> use this directory for user-mode-"
 "linux full disk image."
@@ -2897,36 +2905,36 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><title>
 #. type: Content of: <book><chapter><sect1><title>
-#: pbuilder-doc.xml:1581
+#: pbuilder-doc.xml:1587
 msgid "Directory structure inside the chroot"
 msgstr "chroot 内部のディレクトリ構造"
 
 # type: Content of: <book><chapter><sect1><table><title>
 #. type: Content of: <book><chapter><sect1><table><title>
-#: pbuilder-doc.xml:1583
+#: pbuilder-doc.xml:1589
 msgid "Directory Structure inside the chroot"
 msgstr "chroot 内部のディレクトリ構造"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1595
+#: pbuilder-doc.xml:1601
 msgid "<filename>/etc/mtab</filename>"
 msgstr "<filename>/etc/mtab</filename>"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1597
+#: pbuilder-doc.xml:1603
 msgid "symlink to <filename>/proc/mounts</filename>."
 msgstr " <filename>/proc/mounts</filename>へのシンボリックリンク。"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1601
+#: pbuilder-doc.xml:1607
 msgid "<filename>/tmp/buildd</filename>"
 msgstr "<filename>/tmp/buildd</filename>"
 
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1602
+#: pbuilder-doc.xml:1608
 msgid ""
 "Default place used in <command>pbuilder</command> to place the Debian "
 "package to be processed.  <filename>/tmp/buildd/packagename-version/</"
@@ -2937,7 +2945,7 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1612
+#: pbuilder-doc.xml:1618
 #, fuzzy
 #| msgid "<filename>/run</filename>"
 msgid "<filename>/runscript</filename>"
@@ -2945,7 +2953,7 @@ msgstr "<filename>/run</filename>"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1613
+#: pbuilder-doc.xml:1619
 msgid ""
 "The script passed as an argument to <command>pbuilder</command> execute is "
 "passed on."
@@ -2953,25 +2961,25 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1619
+#: pbuilder-doc.xml:1625
 msgid "<filename>/tmp/hooks</filename>"
 msgstr "<filename>/tmp/hooks</filename>"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1621
+#: pbuilder-doc.xml:1627
 msgid "The location of hooks."
 msgstr "フックの場所。"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1625
+#: pbuilder-doc.xml:1631
 msgid "<filename>/var/cache/apt/archives</filename>"
 msgstr "<filename>/var/cache/apt/archives</filename>"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1627
+#: pbuilder-doc.xml:1633
 msgid ""
 "<command>pbuilder</command> copies the content of this directory to and from "
 "the aptcache directory of outside chroot."
@@ -2981,7 +2989,7 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1634
+#: pbuilder-doc.xml:1640
 #, fuzzy
 msgid ""
 "<command>pbuilder</command> bind-mounts this directory for use by ccache."
@@ -2991,13 +2999,13 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1639
+#: pbuilder-doc.xml:1645
 msgid "<filename>/tmp/XXXX</filename>"
 msgstr "<filename>/tmp/XXXX</filename>"
 
 # type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><sect1><table><tgroup><tbody><row><entry>
-#: pbuilder-doc.xml:1640
+#: pbuilder-doc.xml:1646
 msgid ""
 "<command>pbuilder-user-mode-linux</command> uses a script in <filename>/tmp</"
 "filename> to bootstrap into user-mode-linux"
@@ -3007,19 +3015,19 @@ msgstr ""
 
 # type: Content of: <book><chapter><title>
 #. type: Content of: <book><chapter><title>
-#: pbuilder-doc.xml:1650
+#: pbuilder-doc.xml:1656
 msgid "Minor archaeological details"
 msgstr "些細な過去の経緯の詳細"
 
 # type: Content of: <book><chapter><sect1><title>
 #. type: Content of: <book><chapter><sect1><title>
-#: pbuilder-doc.xml:1652
+#: pbuilder-doc.xml:1658
 msgid "Documentation history"
 msgstr "マニュアルの履歴"
 
 # type: Content of: <book><chapter><sect1><para>
 #. type: Content of: <book><chapter><sect1><para>
-#: pbuilder-doc.xml:1654
+#: pbuilder-doc.xml:1660
 msgid ""
 "This document was started on 28 Dec 2002 by Junichi Uekawa, trying to "
 "document what is known about <command>pbuilder</command>."
@@ -3027,7 +3035,7 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><para>
 #. type: Content of: <book><chapter><sect1><para>
-#: pbuilder-doc.xml:1659
+#: pbuilder-doc.xml:1665
 msgid ""
 "This documentation is available from the <command>pbuilder</command> source "
 "tar-ball, and from the git repository of <command>pbuilder</command> (web-"
@@ -3042,7 +3050,7 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><para>
 #. type: Content of: <book><chapter><sect1><para>
-#: pbuilder-doc.xml:1670
+#: pbuilder-doc.xml:1676
 msgid ""
 "Documentation is written using DocBook XML, with emacs PSGML mode, and using "
 "wysidocbookxml for live previewing."
@@ -3050,13 +3058,13 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><title>
 #. type: Content of: <book><chapter><sect1><title>
-#: pbuilder-doc.xml:1676
+#: pbuilder-doc.xml:1682
 msgid "Possibly inaccurate Background History of pbuilder"
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><para>
 #. type: Content of: <book><chapter><sect1><para>
-#: pbuilder-doc.xml:1678
+#: pbuilder-doc.xml:1684
 msgid ""
 "The following is a most possibly inaccurate account of how "
 "<command>pbuilder</command> came to happen, and other attempts to make "
@@ -3067,13 +3075,13 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><sect2><title>
 #. type: Content of: <book><chapter><sect1><sect2><title>
-#: pbuilder-doc.xml:1685
+#: pbuilder-doc.xml:1691
 msgid "The Time Before pbuilder"
 msgstr ""
 
 # type: Content of: <book><chapter><sect1><sect2><para>
 #. type: Content of: <book><chapter><sect1><sect2><para>
-#: pbuilder-doc.xml:1687
+#: pbuilder-doc.xml:1693
 msgid ""
 "There was once dbuild, which was a shell script to build Debian packages "
 "from source. Lars Wirzenius wrote that script, and it was good, short, and "
@@ -3084,7 +3092,7 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><sect2><para>
 #. type: Content of: <book><chapter><sect1><sect2><para>
-#: pbuilder-doc.xml:1694
+#: pbuilder-doc.xml:1700
 msgid ""
 "debbuild was probably written by James Troup. I don't know it because I have "
 "never seen the actual code, I could only find some references to it on the "
@@ -3093,7 +3101,7 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><sect2><para>
 #. type: Content of: <book><chapter><sect1><sect2><para>
-#: pbuilder-doc.xml:1699
+#: pbuilder-doc.xml:1705
 msgid ""
 "sbuild is a perl script to build Debian packages from source.  It parses "
 "Build-Depends, and performs other miscellaneous checks, and has a lot of "
@@ -3108,13 +3116,13 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><sect2><title>
 #. type: Content of: <book><chapter><sect1><sect2><title>
-#: pbuilder-doc.xml:1713
+#: pbuilder-doc.xml:1719
 msgid "Birth of pbuilder"
 msgstr "pbuilder の誕生"
 
 # type: Content of: <book><chapter><sect1><sect2><para>
 #. type: Content of: <book><chapter><sect1><sect2><para>
-#: pbuilder-doc.xml:1715
+#: pbuilder-doc.xml:1721
 msgid ""
 "wanna-build (sbuild) was (at the time of year 2001) quite difficult to set "
 "up, and it was never a Debian package. dbuild was something that predated "
@@ -3123,7 +3131,7 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><sect2><para>
 #. type: Content of: <book><chapter><sect1><sect2><para>
-#: pbuilder-doc.xml:1720
+#: pbuilder-doc.xml:1726
 msgid ""
 "Building packages from source using Build-Depends information within a "
 "chroot sounded trivial; and <command>pbuilder</command> was born. It was "
@@ -3134,7 +3142,7 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><sect2><para>
 #. type: Content of: <book><chapter><sect1><sect2><para>
-#: pbuilder-doc.xml:1728
+#: pbuilder-doc.xml:1734
 msgid ""
 "Yes, and it took almost an year to get things somewhat right, and in the "
 "middle of the process, Debian 3.0 was released. Yay.  Debian 3.0 wasn't "
@@ -3144,13 +3152,13 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><sect2><title>
 #. type: Content of: <book><chapter><sect1><sect2><title>
-#: pbuilder-doc.xml:1737
+#: pbuilder-doc.xml:1743
 msgid "And the second year of its life"
 msgstr "そして二年目の人生"
 
 # type: Content of: <book><chapter><sect1><sect2><para>
 #. type: Content of: <book><chapter><sect1><sect2><para>
-#: pbuilder-doc.xml:1739
+#: pbuilder-doc.xml:1745
 msgid ""
 "Someone wanted <command>pbuilder</command> to not run as root, and as User-"
 "mode-linux has become more useful as time passed, I've started experimenting "
@@ -3163,13 +3171,13 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><sect2><title>
 #. type: Content of: <book><chapter><sect1><sect2><title>
-#: pbuilder-doc.xml:1752
+#: pbuilder-doc.xml:1758
 msgid "Fifth year of pbuilder"
 msgstr "pbuilder の5年目"
 
 # type: Content of: <book><chapter><sect1><sect2><para>
 #. type: Content of: <book><chapter><sect1><sect2><para>
-#: pbuilder-doc.xml:1754
+#: pbuilder-doc.xml:1760
 msgid ""
 "<command>pbuilder</command> is now widely adopted as a 'almost standard' "
 "tool for testing packages, and building packages in a pristine environment.  "
@@ -3180,7 +3188,7 @@ msgstr ""
 
 # type: Content of: <book><chapter><sect1><sect2><para>
 #. type: Content of: <book><chapter><sect1><sect2><para>
-#: pbuilder-doc.xml:1762
+#: pbuilder-doc.xml:1768
 msgid ""
 "<command>sbuild</command> is now a well-maintained Debian package within "
 "Debian, and with <command>pbuilder</command> being such a slow monster, some "
