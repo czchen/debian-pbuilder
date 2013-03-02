@@ -1,3 +1,14 @@
+pbuilder (0.214) unstable; urgency=low
+
+  [ Junichi Uekawa ]
+  * update documentation about CCACHEDIR (closes: #694311)
+  * update the release target to work with wagner, and release.
+
+  [ Agustin Henze ]
+  * Added support for shared memory mounting point (closes: #700591)
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 02 Mar 2013 16:47:04 +0900
+
 pbuilder (0.213) unstable; urgency=low
 
   [ Beatrice Torracca ]
