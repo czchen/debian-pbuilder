@@ -16,58 +16,55 @@
 set -e
 
 # check whether we are asked to change the compiler.
-case "$CHOOSE_COMPILER" in
-	clang)
-	  newcc=/usr/bin/"$CHOOSE_COMPILER"
-	  newcxx=/usr/bin/"$CHOOSE_COMPILER"++
+case "${CHOOSE_COMPILER}" in
+    clang)
+	newcc=/usr/bin/"${CHOOSE_COMPILER}"
+	newcxx=/usr/bin/"${CHOOSE_COMPILER}"++
   	;;
-	gcc-*)
-          use_gcc_version=`echo $CHOOSE_COMPILER | sed -e s/gcc-//`
-	  gxx_package=g++-"$use_gcc_version"
-	  newcc=/usr/bin/"$CHOOSE_COMPILER"
-	  newcxx=/usr/bin/g++-"$use_gcc_version"
+    gcc-*)
+        use_gcc_version=$(echo ${CHOOSE_COMPILER} | sed -e s/gcc-//)
+	gxx_package=g++-"${use_gcc_version}"
+	newcc=/usr/bin/"${CHOOSE_COMPILER}"
+	newcxx=/usr/bin/g++-"${use_gcc_version}"
 	;;
-	tcc)
-	  newcc=/usr/bin/"$CHOOSE_COMPILER"
-	  newcxx=/bin/false
-	  not_gcc_compat=1
+    tcc)
+	newcc=/usr/bin/"${CHOOSE_COMPILER}"
+	newcxx=/bin/false
+	not_gcc_compat=1
 	;;
-	pcc)
-	  newcc=/usr/bin/"$CHOOSE_COMPILER"
-	  newcxx=/bin/false
-	  not_gcc_compat=1
+    pcc)
+	newcc=/usr/bin/"${CHOOSE_COMPILER}"
+	newcxx=/bin/false
+	not_gcc_compat=1
 	;;
-	asn1c)
-	  newcc=/usr/bin/"$CHOOSE_COMPILER"
-	  newcxx=/bin/false
-	  not_gcc_compat=1
+    asn1c)
+	newcc=/usr/bin/"${CHOOSE_COMPILER}"
+	newcxx=/bin/false
+	not_gcc_compat=1
 	;;
-	*)
-	  exit 0
+    *)
+	exit 0
 	;;
 esac
 
-for compiler in $CHOOSE_COMPILER $gxx_package
-do
-    apt-get -y install "$compiler" || {
-	echo >&2 "E: Installing the compiler "$compiler" failed"
-	exit 1
-    }
-done
+apt-get -y install "${CHOOSE_COMPILER}" ${gxx_package}
 
-test -x /usr/bin/"$CHOOSE_COMPILER" || {
-	echo >&2 "E: Package "$CHOOSE_COMPILER" does not contain compiler driver?"
-	exit 1
-}
+if [ ! -x /usr/bin/"${CHOOSE_COMPILER}" ]; then
+    echo >&2 "E: Package ${CHOOSE_COMPILER} does not contain compiler driver?"
+    exit 1
+fi
 
+ln -sf "${newcc}" /usr/bin/cc
+ln -sf "${newcxx}" /usr/bin/c++
 
-ln -sf "$newcc" /usr/bin/cc
-ln -sf "$newcxx" /usr/bin/c++
-
-if [ x"$not_gcc_compat" = x ]; then
-	(cd /usr/bin; ln -sf "$newcc" gcc; ln -sf "$newcxx" g++)
+if [ -z "${not_gcc_compat}" ]; then
+    (
+	cd /usr/bin
+	ln -sf "$newcc" gcc
+	ln -sf "$newcxx" g++
+    )
 else
-	rm -f /usr/bin/gcc /usr/bin/g++
+    rm -f /usr/bin/gcc /usr/bin/g++
 fi
 
 exit 0
