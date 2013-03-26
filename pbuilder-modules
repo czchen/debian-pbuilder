@@ -221,8 +221,8 @@ function umountproc () {
     if [ "$USEDEVFS" = "yes" ]; then
 	umount_one "dev"
     fi
-    if [ "$USEDEVSHM" = "yes" ]; then
-	umount_one "$SHM_PATH"
+    if [ "$USERUNSHM" = "yes" ]; then
+	umount_one "run/shm"
     fi
     if [ "$USEPROC" = "yes" ]; then
 	if [ "$DEB_BUILD_ARCH_OS" = "linux" ] && [ -e $BUILDPLACE/proc/sys/fs/binfmt_misc/status ]; then
@@ -245,7 +245,9 @@ function mountproc () {
 	log "I: mounting /proc filesystem"
 	mkdir -p $BUILDPLACE/proc
 	PROCFS="proc"
-	[ "$DEB_BUILD_ARCH_OS" = "kfreebsd" ] && PROCFS="linprocfs"
+	if [ "$DEB_BUILD_ARCH_OS" = "kfreebsd" ]; then
+	    PROCFS="linprocfs"
+	fi
 	mount -t $PROCFS /proc "$BUILDPLACE/proc"
 	ln -s ../proc/mounts $BUILDPLACE/etc/mtab 2> /dev/null || true
 	mounted[${#mounted[@]}]="$BUILDPLACE/proc"
@@ -256,13 +258,11 @@ function mountproc () {
 	mount -t devfs /dev "$BUILDPLACE/dev" 
 	mounted[${#mounted[@]}]="$BUILDPLACE/dev"
     fi
-    if [ "$DEB_BUILD_ARCH_OS" = "linux" ] && [ "$USEDEVSHM" = "yes" ]; then
-	SHM_PATH="run/shm"
-	[ ! -d "/$SHM_PATH" ] && SHM_PATH="dev/shm"
-	log "I: mounting /$SHM_PATH filesystem"
-	mkdir -p $BUILDPLACE/$SHM_PATH || true
-	mount -t tmpfs tmpfs "$BUILDPLACE/$SHM_PATH"
-	mounted[${#mounted[@]}]="$BUILDPLACE/$SHM_PATH"
+    if [ "$DEB_BUILD_ARCH_OS" = "linux" ] && [ "$USERUNSHM" = "yes" ]; then
+	log "I: mounting /run/shm filesystem"
+	mkdir -p $BUILDPLACE/run/shm || true
+	mount -t tmpfs tmpfs "$BUILDPLACE/run/shm"
+	mounted[${#mounted[@]}]="$BUILDPLACE/run/shm"
     fi
     if [ "$DEB_BUILD_ARCH_OS" = "linux" ] && [ "$USEDEVPTS" = "yes" ]; then
 	log "I: mounting /dev/pts filesystem"
