@@ -91,7 +91,7 @@ EXAMPLE_SCRIPTS += \
 	examples/C11screen \
 	examples/D10tmp \
 	examples/D20addnonfree \
-	examples/D65various-complier-support \
+	examples/D65various-compiler-support \
 	examples/D80no-man-db-rebuild \
 	examples/D90chrootmemo \
 	examples/F90chrootmemo \
