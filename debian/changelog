@@ -1,3 +1,10 @@
+pbuilder (0.215) unstable; urgency=low
+
+  * Do not try to use /dev/shm if /run/shm is not present. (closes: #702811, #702102)
+  * Add clang support hook script from Hideki Yamane. (closes: #700290)
+
+ -- Junichi Uekawa <dancer@debian.org>  Sat, 30 Mar 2013 11:06:05 +0900
+
 pbuilder (0.214) unstable; urgency=low
 
   [ Junichi Uekawa ]
