@@ -37,11 +37,6 @@ case "${CHOOSE_COMPILER}" in
 	newcxx=/bin/false
 	not_gcc_compat=1
 	;;
-    asn1c)
-	newcc=/usr/bin/"${CHOOSE_COMPILER}"
-	newcxx=/bin/false
-	not_gcc_compat=1
-	;;
     *)
 	exit 0
 	;;
