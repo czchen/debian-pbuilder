@@ -10,6 +10,7 @@
 # the main XML file which is source to all documents
 MASTERXML=pbuilder-doc.xml
 HTMLDOCS= pbuilder-doc.html pbuilder-doc.ja.html pbuilder-doc.fr.html pbuilder-doc.de.html
+ALIOTH_FILEHOSTING:=alioth.debian.org
 
 all: $(HTMLDOCS)
 
@@ -36,7 +37,7 @@ preview: pbuilder-doc.html
 	mozilla-firefox -remote "openfile($(PWD)/$<)"
 
 release: pbuilder-doc.html pbuilder-doc.xml pbuilder-doc.css pbuilder-doc.xsl pbuilder-doc.pdf
-	scp $^ wagner.debian.org:/home/groups/pbuilder/htdocs/ 
+	scp $^ ${ALIOTH_FILEHOSTING}:/home/groups/pbuilder/htdocs/ 
 
 clean: 
 	rm -f pbuilder-doc.pdf pbuilder-doc.glo pbuilder-doc.idx pbuilder-doc.log pbuilder-doc.out \
