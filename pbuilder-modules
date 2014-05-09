@@ -213,7 +213,7 @@ function umountproc () {
 	umount_one "$mnt"
     done
     if [ -x /usr/sbin/selinuxenabled ] && /usr/sbin/selinuxenabled; then
-	umount_one "selinux"
+	umount_one "$(grep -m 1 ^selinuxfs /proc/mounts | cut -d ' ' -f 2)"
     fi
     if [ "$DEB_BUILD_ARCH_OS" = "linux" ] && [ "$USEDEVPTS" = "yes" ]; then
 	umount_one "dev/pts"
@@ -275,9 +275,11 @@ function mountproc () {
     fi
     if [ -x /usr/sbin/selinuxenabled ] && /usr/sbin/selinuxenabled; then
 	log "I: mounting selinux filesystem"
-	mkdir -p $BUILDPLACE/selinux
-	mount -t selinuxfs /selinux "$BUILDPLACE/selinux"
-	mounted[${#mounted[@]}]="$BUILDPLACE/selinux"
+	SELINUX="$(grep -m 1 ^selinuxfs /proc/mounts | cut -d ' ' -f 2)"
+	mkdir -p $BUILDPLACE/$SELINUX
+	mount --bind $SELINUX "$BUILDPLACE/$SELINUX"
+	mount -o remount,ro,bind "$BUILDPLACE/$SELINUX"
+	mounted[${#mounted[@]}]="$BUILDPLACE/$SELINUX"
     fi
     MOUNTPARAMS="-obind"
     [ "$DEB_BUILD_ARCH_OS" = "kfreebsd" ] && MOUNTPARAMS="-t nullfs"
